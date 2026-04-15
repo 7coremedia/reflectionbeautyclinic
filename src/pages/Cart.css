@@ -1,0 +1,123 @@
+.cart-page {
+  padding-top: 100px;
+  padding-bottom: var(--space-2xl);
+  min-height: 80vh;
+}
+
+.cart-full {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.cart-table__header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--sand);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--taupe);
+}
+
+.cart-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  align-items: center;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--sand);
+}
+
+.cart-row__product {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.cart-row__img {
+  width: 90px;
+  aspect-ratio: 4/5;
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+
+.cart-row__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.cart-row__name {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--near-black);
+  text-decoration: none;
+}
+
+.cart-row__size {
+  font-size: 0.8rem;
+  color: var(--stone);
+}
+
+.cart-row__price {
+  font-weight: 500;
+  margin-top: 0.25rem;
+  color: var(--charcoal);
+}
+
+.cart-row__remove {
+  font-size: 0.75rem;
+  color: var(--stone);
+  text-decoration: underline;
+  margin-top: auto;
+  text-align: left;
+  width: fit-content;
+}
+
+.cart-row__remove:hover {
+  color: var(--espresso);
+}
+
+.cart-row__total {
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--near-black);
+}
+
+.cart-summary {
+  background: var(--warm-white);
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  margin-left: auto;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: var(--shadow-sm);
+}
+
+.cart-summary__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--near-black);
+}
+
+.cart-summary__note {
+  font-size: 0.8rem;
+  color: var(--stone);
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .cart-table__header { display: none; }
+  .cart-row {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .cart-row__qty { margin-left: 105px; }
+  .cart-row__total { display: none; }
+  .cart-summary { max-width: 100%; }
+}

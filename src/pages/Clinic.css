@@ -1,0 +1,71 @@
+.clinic-page {
+  padding-top: 72px;
+}
+
+.clinic-hero {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+.clinic-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.clinic-hero__content {
+  position: relative;
+  z-index: 1;
+}
+
+.clinic-service-card {
+  background: var(--warm-white);
+  padding: 2.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--sand);
+  transition: box-shadow var(--duration-base);
+}
+
+.clinic-service-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.clinic-service-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+}
+
+.clinic-service-card__name {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--near-black);
+}
+
+.clinic-service-card__price {
+  font-weight: 500;
+  color: var(--near-black);
+}
+
+.clinic-service-card__meta {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--taupe);
+  margin-bottom: 1.5rem;
+}
+
+.clinic-service-card__desc {
+  color: var(--stone);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .clinic-service-card {
+    padding: 1.5rem;
+  }
+}
