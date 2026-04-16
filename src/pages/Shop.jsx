@@ -1,7 +1,7 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
-import { products, categories } from '../data/products';
+import { getProducts, getCategories } from '../lib/api';
 import './Shop.css';
 
 export default function Shop() {
@@ -9,6 +9,23 @@ export default function Shop() {
   const activeCategory = searchParams.get('category') || 'all';
   const [sort, setSort] = useState('default');
   const [searchQuery, setSearchQuery] = useState('');
+
+  const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadData() {
+      const [fetchedProducts, fetchedCategories] = await Promise.all([
+        getProducts(),
+        getCategories()
+      ]);
+      setProducts(fetchedProducts || []);
+      setCategories(fetchedCategories || []);
+      setLoading(false);
+    }
+    loadData();
+  }, []);
 
   const filtered = useMemo(() => {
     let result = activeCategory === 'all' ? products : products.filter(p => p.category === activeCategory);
@@ -20,7 +37,11 @@ export default function Shop() {
     if (sort === 'price-desc') result = [...result].sort((a, b) => b.price - a.price);
     if (sort === 'rating') result = [...result].sort((a, b) => b.rating - a.rating);
     return result;
-  }, [activeCategory, sort, searchQuery]);
+  }, [activeCategory, sort, searchQuery, products]);
+
+  if (loading) {
+    return <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Loading Shop...</div>;
+  }
 
   return (
     <div className="shop page-enter">

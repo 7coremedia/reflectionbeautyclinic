@@ -1,19 +1,60 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useCart } from '../context/CartContext';
+import { createOrder } from '../lib/api';
 import './Checkout.css';
 
 export default function Checkout() {
   const { items, total, clearCart } = useCart();
   const navigate = useNavigate();
   const [step, setStep] = useState(1); // 1: Shipping, 2: Payment, 3: Success
+  const [loading, setLoading] = useState(false);
+  const [orderError, setOrderError] = useState(null);
 
-  const handleSubmit = (e) => {
+  // Form State
+  const [formData, setFormData] = useState({
+    email: '',
+    firstName: '',
+    lastName: '',
+    address: '',
+    city: '',
+    country: 'United Kingdom',
+    postcode: ''
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (step === 1) setStep(2);
-    else if (step === 2) {
-      clearCart();
-      setStep(3);
+    if (step === 1) {
+      setStep(2);
+    } else if (step === 2) {
+      setLoading(true);
+      setOrderError(null);
+      try {
+        await createOrder({
+          email: formData.email,
+          first_name: formData.firstName,
+          last_name: formData.lastName,
+          address: formData.address,
+          city: formData.city,
+          country: formData.country,
+          postcode: formData.postcode,
+          total_amount: total,
+          status: 'pending',
+          items: items // Automatically converted to JSONB
+        });
+        clearCart();
+        setStep(3);
+      } catch (err) {
+        console.error('Checkout failed', err);
+        setOrderError('There was a problem processing your order. Please try again.');
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
@@ -56,19 +97,19 @@ export default function Checkout() {
               {step === 1 && (
                 <div className="checkout-section">
                   <h2 className="heading-md mb-3">Contact Information</h2>
-                  <input type="email" className="form-input mb-4" placeholder="Email address" required />
+                  <input type="email" name="email" value={formData.email} onChange={handleInputChange} className="form-input mb-4" placeholder="Email address" required />
                   
                   <h2 className="heading-md mb-3 mt-4">Shipping Address</h2>
                   <div className="grid-2 mb-3">
-                    <input type="text" className="form-input" placeholder="First name" required />
-                    <input type="text" className="form-input" placeholder="Last name" required />
+                    <input type="text" name="firstName" value={formData.firstName} onChange={handleInputChange} className="form-input" placeholder="First name" required />
+                    <input type="text" name="lastName" value={formData.lastName} onChange={handleInputChange} className="form-input" placeholder="Last name" required />
                   </div>
-                  <input type="text" className="form-input mb-3" placeholder="Address" required />
+                  <input type="text" name="address" value={formData.address} onChange={handleInputChange} className="form-input mb-3" placeholder="Address" required />
                   <input type="text" className="form-input mb-3" placeholder="Apartment, suite, etc. (optional)" />
                   <div className="grid-3 mb-4">
-                    <input type="text" className="form-input" placeholder="City" required />
-                    <select className="form-input"><option>United Kingdom</option></select>
-                    <input type="text" className="form-input" placeholder="Postcode" required />
+                    <input type="text" name="city" value={formData.city} onChange={handleInputChange} className="form-input" placeholder="City" required />
+                    <select name="country" value={formData.country} onChange={handleInputChange} className="form-input"><option>United Kingdom</option></select>
+                    <input type="text" name="postcode" value={formData.postcode} onChange={handleInputChange} className="form-input" placeholder="Postcode" required />
                   </div>
                   <button type="submit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>Continue to Payment</button>
                 </div>
@@ -77,6 +118,7 @@ export default function Checkout() {
               {step === 2 && (
                 <div className="checkout-section">
                   <h2 className="heading-md mb-3">Payment Details</h2>
+                  {orderError && <div style={{ color: 'red', marginBottom: '1rem' }}>{orderError}</div>}
                   <div className="payment-box">
                     <input type="text" className="form-input mb-3" placeholder="Card number" required />
                     <div className="grid-2 mb-3">
@@ -87,8 +129,10 @@ export default function Checkout() {
                   </div>
                   
                   <div style={{ display: 'flex', gap: '1rem', marginTop: '2rem' }}>
-                    <button type="button" className="btn btn-outline" onClick={() => setStep(1)}>Back</button>
-                    <button type="submit" className="btn btn-primary flex-1" style={{ justifyContent: 'center' }}>Place Order — £{total.toFixed(2)}</button>
+                    <button type="button" className="btn btn-outline" onClick={() => setStep(1)} disabled={loading}>Back</button>
+                    <button type="submit" className="btn btn-primary flex-1" style={{ justifyContent: 'center' }} disabled={loading}>
+                      {loading ? 'Processing...' : `Place Order — £${total.toFixed(2)}`}
+                    </button>
                   </div>
                 </div>
               )}

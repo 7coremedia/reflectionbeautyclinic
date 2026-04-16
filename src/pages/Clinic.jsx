@@ -1,8 +1,25 @@
-import { clinicServices } from '../data/products';
+import { useState, useEffect } from 'react';
+import { getClinicServices } from '../lib/api';
 import { Link } from 'react-router-dom';
 import './Clinic.css';
 
 export default function Clinic() {
+  const [clinicServices, setClinicServices] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadData() {
+      const services = await getClinicServices();
+      setClinicServices(services || []);
+      setLoading(false);
+    }
+    loadData();
+  }, []);
+
+  if (loading) {
+    return <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Loading Clinic...</div>;
+  }
+
   return (
     <div className="clinic-page page-enter">
       {/* Hero */}

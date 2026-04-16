@@ -1,10 +1,31 @@
 import { Link } from 'react-router-dom';
-import { blogPosts } from '../data/products';
+import { useState, useEffect } from 'react';
+import { getBlogPosts } from '../lib/api';
 import './Journal.css';
 
 export default function Journal() {
+  const [blogPosts, setBlogPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadData() {
+      const posts = await getBlogPosts();
+      setBlogPosts(posts || []);
+      setLoading(false);
+    }
+    loadData();
+  }, []);
+
+  if (loading) {
+    return <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Loading Journal...</div>;
+  }
+
   const featured = blogPosts[0];
   const rest = blogPosts.slice(1);
+
+  if (!featured) {
+    return <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>No articles found.</div>;
+  }
 
   return (
     <div className="journal-page page-enter">

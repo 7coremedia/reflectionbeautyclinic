@@ -1,8 +1,9 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useCart } from '../context/CartContext';
-import { products } from '../data/products';
+import { getProductById, getProducts } from '../lib/api';
 import ProductCard from '../components/ProductCard';
+import SEO from '../components/SEO';
 import './ProductDetail.css';
 
 export default function ProductDetail() {
@@ -11,8 +12,31 @@ export default function ProductDetail() {
   const { addItem } = useCart();
   const [qty, setQty] = useState(1);
   const [activeTab, setActiveTab] = useState('benefits');
+  
+  const [product, setProduct] = useState(null);
+  const [related, setRelated] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const product = products.find(p => p.id === id);
+  useEffect(() => {
+    async function loadData() {
+      setLoading(true);
+      const fetchedProduct = await getProductById(id);
+      if (fetchedProduct) {
+        setProduct(fetchedProduct);
+        const allProducts = await getProducts();
+        const relatedProducts = allProducts.filter(p => p.category === fetchedProduct.category && p.id !== fetchedProduct.id).slice(0, 4);
+        setRelated(relatedProducts);
+      } else {
+        setProduct(null);
+      }
+      setLoading(false);
+    }
+    loadData();
+  }, [id]);
+
+  if (loading) {
+    return <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Loading Product...</div>;
+  }
   
   if (!product) {
     return (
@@ -23,22 +47,56 @@ export default function ProductDetail() {
     );
   }
 
-  const related = products.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
+  const productSchema = {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": product.name,
+    "image": [product.image_url || "https://reflectionbeautyclinic.com/placeholder.jpg"],
+    "description": product.description,
+    "sku": product.id,
+    "brand": {
+      "@type": "Brand",
+      "name": "Reflection"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": `https://reflectionbeautyclinic.com/shop/${product.id}`,
+      "priceCurrency": "GBP",
+      "price": product.price,
+      "itemCondition": "https://schema.org/NewCondition",
+      "availability": "https://schema.org/InStock"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": product.rating || 5,
+      "reviewCount": product.reviews || 1
+    }
+  };
 
   return (
     <div className="product-page page-enter">
+      <SEO 
+        title={product.name}
+        description={product.subtitle + ". " + product.description.substring(0, 120) + "..."}
+        path={`/shop/${product.id}`}
+        schema={productSchema}
+      />
       <div className="container">
         <div className="product-detail">
           {/* Left: Images */}
           <div className="product-detail__visuals">
             <div 
               className="product-detail__main-img"
-              style={{ background: `linear-gradient(145deg, ${product.shade}55 0%, ${product.shade} 100%)` }}
+              style={{ padding: product.image_url ? '0' : '3rem', background: product.image_url ? 'none' : `linear-gradient(145deg, ${product.shade}55 0%, ${product.shade} 100%)` }}
             >
-              <div className="product-detail__img-content">
-                <span className="product-detail__img-name">{product.name}</span>
-                <span className="product-detail__img-size">{product.size}</span>
-              </div>
+              {product.image_url ? (
+                <img src={product.image_url} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              ) : (
+                <div className="product-detail__img-content">
+                  <span className="product-detail__img-name">{product.name}</span>
+                  <span className="product-detail__img-size">{product.size}</span>
+                </div>
+              )}
             </div>
             <div className="product-detail__thumbnails">
               {[1, 2, 3].map(i => (

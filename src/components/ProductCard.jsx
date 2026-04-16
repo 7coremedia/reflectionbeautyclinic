@@ -11,13 +11,18 @@ export default function ProductCard({ product }) {
         <div
           className="product-card__img img-placeholder"
           style={{
-            background: `linear-gradient(145deg, ${product.shade}55 0%, ${product.shade}cc 50%, ${product.shade}88 100%)`
+            padding: product.image_url ? '0' : undefined,
+            background: product.image_url ? 'none' : `linear-gradient(145deg, ${product.shade}55 0%, ${product.shade}cc 50%, ${product.shade}88 100%)`
           }}
         >
-          <div className="product-card__img-content">
-            <span className="product-card__img-name">{product.name}</span>
-            <span className="product-card__img-size">{product.size}</span>
-          </div>
+          {product.image_url ? (
+            <img src={product.image_url} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          ) : (
+            <div className="product-card__img-content">
+              <span className="product-card__img-name">{product.name}</span>
+              <span className="product-card__img-size">{product.size}</span>
+            </div>
+          )}
         </div>
         {product.badge && (
           <span className="product-card__badge badge badge-dark">{product.badge}</span>

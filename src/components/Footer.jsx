@@ -74,6 +74,12 @@ export default function Footer() {
               <p className="footer__tagline">
                 Skincare rooted in science.<br />Luxury without compromise.
               </p>
+              <div className="footer__nap" style={{ margin: '1.5rem 0', opacity: 0.8, fontSize: '0.9rem', lineHeight: '1.6' }}>
+                <strong style={{ color: 'var(--gold, #C8A882)' }}>Reflection Beauty Clinic</strong><br/>
+                bus stop, 10 Idimu Rd, Egbeda,<br/>
+                Lagos 102213, Lagos<br/>
+                Phone: <a href="tel:+2348026021946" style={{ color: 'inherit', textDecoration: 'none' }}>0802 602 1946</a>
+              </div>
               <div className="footer__social">
                 <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="footer__social-btn">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
