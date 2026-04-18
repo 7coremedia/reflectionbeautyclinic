@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beauty Clinic Alimosho Lagos | Reflection Beauty Clinic</title>
+<meta name="description" content="Reflection Beauty Clinic — skin treatments, facials, medical spa, teeth whitening and skincare products in Alimosho, Lagos. Science-backed. Clinically led.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a08;
+    --white: #faf9f6;
+    --cream: #f3f0e8;
+    --sage: #b8bfad;
+    --sage-dark: #7a8470;
+    --warm-gray: #9e9b93;
+    --border: rgba(10,10,8,0.12);
+    --accent: #2c2c1e;
+    --gold: #c8a96e;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--black);
+    font-size: 15px;
+    line-height: 1.6;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px;
+    height: 64px;
+    background: rgba(250,249,246,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; font-weight: 400; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--black); text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 13px; font-weight: 400; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--black); text-decoration: none;
+    opacity: 0.65; transition: opacity 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; }
+  .nav-cta {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--black); text-decoration: none;
+    border: 0.5px solid var(--black); padding: 9px 20px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .nav-cta:hover { background: var(--black); color: var(--white); }
+
+  /* ── TICKER ── */
+  .ticker {
+    background: var(--black); color: var(--white);
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 8px 0; overflow: hidden; margin-top: 64px;
+  }
+  .ticker-inner {
+    display: flex; gap: 64px; white-space: nowrap;
+    animation: ticker 28s linear infinite;
+  }
+  .ticker-inner span { opacity: 0.75; }
+  .ticker-inner span.dot { opacity: 0.3; }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 92vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .hero-left {
+    padding: 80px 60px 80px 40px;
+    display: flex; flex-direction: column; justify-content: center;
+    border-right: 0.5px solid var(--border);
+  }
+  .hero-eyebrow {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--warm-gray); margin-bottom: 28px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 24px; height: 0.5px; background: var(--warm-gray);
+  }
+  .hero-h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(44px, 5.5vw, 72px);
+    font-weight: 300; line-height: 1.08; letter-spacing: -0.01em;
+    margin-bottom: 28px; color: var(--black);
+  }
+  .hero-h1 em { font-style: italic; }
+  .hero-sub {
+    font-size: 16px; font-weight: 300; color: var(--warm-gray);
+    line-height: 1.7; max-width: 400px; margin-bottom: 44px;
+  }
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--black); color: var(--white);
+    font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 14px 28px; text-decoration: none; transition: opacity 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { opacity: 0.8; }
+  .btn-ghost {
+    font-size: 12px; font-weight: 400; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--black); text-decoration: none;
+    border-bottom: 0.5px solid var(--black); padding-bottom: 2px;
+    transition: opacity 0.2s;
+  }
+  .btn-ghost:hover { opacity: 0.5; }
+  .hero-stats {
+    margin-top: 64px; display: flex; gap: 48px;
+    border-top: 0.5px solid var(--border); padding-top: 32px;
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px; font-weight: 300; line-height: 1; margin-bottom: 4px;
+  }
+  .stat-label { font-size: 12px; color: var(--warm-gray); letter-spacing: 0.04em; }
+
+  .hero-right {
+    background: var(--cream);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-img-placeholder {
+    width: 100%; height: 100%; min-height: 500px;
+    background: linear-gradient(160deg, #e8e4d9 0%, #d4cfc0 100%);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 8px;
+  }
+  .hero-img-label {
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--warm-gray); opacity: 0.6;
+  }
+
+  /* ── TRUST BAR ── */
+  .trust-bar {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .trust-item {
+    padding: 32px 28px;
+    border-right: 0.5px solid var(--border);
+  }
+  .trust-item:last-child { border-right: none; }
+  .trust-icon { font-size: 14px; margin-bottom: 10px; opacity: 0.5; }
+  .trust-title { font-size: 13px; font-weight: 500; margin-bottom: 6px; }
+  .trust-desc { font-size: 13px; color: var(--warm-gray); line-height: 1.5; }
+
+  /* ── SECTION SHARED ── */
+  section { border-bottom: 0.5px solid var(--border); }
+  .section-label {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--warm-gray); margin-bottom: 48px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::before { content: ''; display: block; width: 24px; height: 0.5px; background: var(--warm-gray); }
+  .section-h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 52px); font-weight: 300; line-height: 1.12;
+    margin-bottom: 20px;
+  }
+  .section-h2 em { font-style: italic; }
+
+  /* ── SERVICES ── */
+  .services { padding: 80px 40px; }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+    border: 0.5px solid var(--border); margin-top: 56px;
+  }
+  .service-card {
+    padding: 40px 36px;
+    border-right: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+    position: relative;
+    transition: background 0.3s;
+    text-decoration: none; color: var(--black);
+    display: block;
+  }
+  .service-card:hover { background: var(--cream); }
+  .service-card:nth-child(3n) { border-right: none; }
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px; color: var(--warm-gray); letter-spacing: 0.12em;
+    margin-bottom: 20px; display: block;
+  }
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; font-weight: 300; line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .service-desc { font-size: 13px; color: var(--warm-gray); line-height: 1.6; margin-bottom: 20px; }
+  .service-link {
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--black); opacity: 0.5;
+  }
+
+  /* ── CLINIC INTRO ── */
+  .clinic-intro {
+    display: grid; grid-template-columns: 1fr 1fr;
+  }
+  .clinic-intro-left {
+    padding: 80px 60px 80px 40px;
+    border-right: 0.5px solid var(--border);
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .clinic-intro-right {
+    background: var(--black); color: var(--white);
+    padding: 80px 60px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .clinic-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 2.8vw, 38px); font-weight: 300; line-height: 1.4;
+    font-style: italic; margin-bottom: 40px;
+  }
+  .clinic-address {
+    font-size: 13px; color: rgba(250,249,246,0.5);
+    line-height: 1.8; border-top: 0.5px solid rgba(255,255,255,0.12);
+    padding-top: 28px;
+  }
+  .clinic-address strong { color: var(--white); font-weight: 400; }
+
+  /* ── SKINCARE PRODUCTS ── */
+  .products { padding: 80px 40px; }
+  .products-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    background: var(--border); margin-top: 56px;
+  }
+  .product-card {
+    background: var(--white); padding: 32px 24px;
+    transition: background 0.2s;
+    text-decoration: none; color: var(--black);
+  }
+  .product-card:hover { background: var(--cream); }
+  .product-img {
+    aspect-ratio: 1; background: var(--cream);
+    margin-bottom: 20px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .product-img-label { font-size: 10px; color: var(--warm-gray); letter-spacing: 0.1em; text-transform: uppercase; }
+  .product-name { font-size: 15px; font-weight: 400; margin-bottom: 6px; line-height: 1.3; }
+  .product-desc { font-size: 12px; color: var(--warm-gray); margin-bottom: 14px; line-height: 1.5; }
+  .product-price { font-size: 16px; font-weight: 400; }
+
+  /* ── PROOF ── */
+  .proof {
+    display: grid; grid-template-columns: 280px 1fr;
+    min-height: 360px;
+  }
+  .proof-left {
+    background: var(--black); color: var(--white);
+    padding: 60px 40px;
+    display: flex; flex-direction: column; justify-content: center;
+    border-right: 0.5px solid rgba(255,255,255,0.08);
+  }
+  .proof-rating {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px; font-weight: 300; line-height: 1; margin-bottom: 8px;
+  }
+  .proof-stars { color: var(--gold); letter-spacing: 2px; font-size: 14px; margin-bottom: 8px; }
+  .proof-count { font-size: 12px; color: rgba(250,249,246,0.45); letter-spacing: 0.06em; }
+  .proof-right { overflow-x: auto; }
+  .reviews-scroll {
+    display: flex; gap: 0;
+    height: 100%;
+  }
+  .review-card {
+    flex-shrink: 0; width: 320px; padding: 48px 36px;
+    border-right: 0.5px solid var(--border);
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .review-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; font-weight: 300; line-height: 1.6; font-style: italic;
+    margin-bottom: 24px;
+  }
+  .review-author { font-size: 12px; color: var(--warm-gray); letter-spacing: 0.06em; text-transform: uppercase; }
+  .review-stars { color: var(--gold); font-size: 11px; margin-bottom: 6px; }
+
+  /* ── TREATMENTS TABLE ── */
+  .treatments { padding: 80px 40px; }
+  .treatments-table { width: 100%; border-collapse: collapse; margin-top: 48px; }
+  .treatments-table thead tr {
+    border-bottom: 0.5px solid var(--black);
+  }
+  .treatments-table th {
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    font-weight: 500; padding: 0 0 16px 0; text-align: left; color: var(--warm-gray);
+  }
+  .treatments-table th:last-child, .treatments-table td:last-child { text-align: right; }
+  .treatments-table td {
+    padding: 18px 0; border-bottom: 0.5px solid var(--border);
+    font-size: 14px;
+  }
+  .treatments-table tr:hover td { background: var(--cream); }
+  .treat-name { font-weight: 400; }
+  .treat-cat {
+    font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--warm-gray);
+  }
+  .treat-duration { color: var(--warm-gray); }
+  .treat-book {
+    font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--black); text-decoration: none;
+    border-bottom: 0.5px solid var(--black); padding-bottom: 1px;
+    opacity: 0.5; transition: opacity 0.2s;
+  }
+  .treat-book:hover { opacity: 1; }
+
+  /* ── PHILOSOPHY ── */
+  .philosophy {
+    display: grid; grid-template-columns: 1fr 1fr;
+  }
+  .phil-left {
+    background: var(--cream); padding: 80px 60px 80px 40px;
+    border-right: 0.5px solid var(--border);
+  }
+  .phil-right { padding: 80px 60px; }
+  .phil-points { margin-top: 40px; display: flex; flex-direction: column; gap: 28px; }
+  .phil-point { padding-top: 20px; border-top: 0.5px solid var(--border); }
+  .phil-point-title { font-size: 14px; font-weight: 500; margin-bottom: 6px; }
+  .phil-point-desc { font-size: 13px; color: var(--warm-gray); line-height: 1.6; }
+
+  /* ── LOCATION ── */
+  .location {
+    display: grid; grid-template-columns: 1fr 400px;
+  }
+  .location-left { padding: 80px 60px 80px 40px; border-right: 0.5px solid var(--border); }
+  .location-right { background: var(--cream); padding: 60px 40px; }
+  .location-map-placeholder {
+    width: 100%; aspect-ratio: 1;
+    background: #ddd9ce;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; color: var(--warm-gray); letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .location-details { font-size: 14px; line-height: 2; color: var(--warm-gray); }
+  .location-details strong { color: var(--black); font-weight: 400; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black); color: var(--white);
+    padding: 60px 40px 32px;
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px; margin-bottom: 60px; padding-bottom: 48px;
+    border-bottom: 0.5px solid rgba(255,255,255,0.1);
+  }
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: 400; margin-bottom: 16px;
+  }
+  .footer-tagline { font-size: 13px; color: rgba(250,249,246,0.4); line-height: 1.7; }
+  .footer-col-title {
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    font-weight: 500; margin-bottom: 20px; color: rgba(250,249,246,0.4);
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .footer-links a {
+    font-size: 13px; color: rgba(250,249,246,0.65); text-decoration: none; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--white); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; color: rgba(250,249,246,0.3);
+  }
+
+  /* ── SCHEMA (hidden) ── */
+  script[type="application/ld+json"] { display: none; }
+</style>
+</head>
+<body>
+
+<!-- LOCAL BUSINESS SCHEMA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BeautySalon",
+  "name": "Reflection Beauty Clinic",
+  "image": "https://www.reflection.ng/og-image.jpg",
+  "url": "https://www.reflection.ng",
+  "telephone": "",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "10 Idimu Rd, Egbeda",
+    "addressLocality": "Alimosho",
+    "addressRegion": "Lagos",
+    "postalCode": "102213",
+    "addressCountry": "NG"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 6.5989892,
+    "longitude": 3.2910781
+  },
+  "openingHours": "Mo-Sa 09:00-18:00",
+  "priceRange": "₦₦₦",
+  "sameAs": [
+    "https://www.google.com/maps/place/Reflection+Beauty+Clinic"
+  ]
+}
+</script>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">Reflection</a>
+  <ul class="nav-links">
+    <li><a href="/clinic">Clinic</a></li>
+    <li><a href="/skincare">Skincare</a></li>
+    <li><a href="/treatments">Treatments</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/journal">Journal</a></li>
+  </ul>
+  <a href="/book" class="nav-cta">Book a Visit</a>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>Skin Clinic · Alimosho, Lagos</span>
+    <span class="dot">·</span>
+    <span>Facials &amp; Advanced Treatments</span>
+    <span class="dot">·</span>
+    <span>Medical Spa &amp; Wellness</span>
+    <span class="dot">·</span>
+    <span>Professional Teeth Whitening</span>
+    <span class="dot">·</span>
+    <span>SkincareByReflection™ Products</span>
+    <span class="dot">·</span>
+    <span>Skin Clinic · Alimosho, Lagos</span>
+    <span class="dot">·</span>
+    <span>Facials &amp; Advanced Treatments</span>
+    <span class="dot">·</span>
+    <span>Medical Spa &amp; Wellness</span>
+    <span class="dot">·</span>
+    <span>Professional Teeth Whitening</span>
+    <span class="dot">·</span>
+    <span>SkincareByReflection™ Products</span>
+    <span class="dot">·</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Beauty Clinic · Alimosho, Lagos</p>
+    <h1 class="hero-h1">
+      Skin that <em>reflects</em><br>who you are.
+    </h1>
+    <p class="hero-sub">
+      A clinical skin clinic, medical spa, and skincare brand in the heart of Alimosho. We treat real skin concerns — hyperpigmentation, acne, ageing — with professional-grade treatments and science-led products.
+    </p>
+    <div class="hero-actions">
+      <a href="/book" class="btn-primary">Book a Consultation</a>
+      <a href="/treatments" class="btn-ghost">View Treatments</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">4.9</div>
+        <div class="stat-label">Google Rating</div>
+      </div>
+      <div>
+        <div class="stat-num">98%</div>
+        <div class="stat-label">Visible Results in 4 Weeks</div>
+      </div>
+      <div>
+        <div class="stat-num">50k+</div>
+        <div class="stat-label">Clients Treated</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-placeholder">
+      <div class="hero-img-label">Hero image — clinic interior or treatment</div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <div class="trust-icon">◈</div>
+    <div class="trust-title">Dermatologist Tested</div>
+    <div class="trust-desc">Every formula verified before it reaches your skin.</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">✦</div>
+    <div class="trust-title">Clinically Backed</div>
+    <div class="trust-desc">Developed alongside our clinic team for professional-grade results.</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">◯</div>
+    <div class="trust-title">Clean Formulation</div>
+    <div class="trust-desc">No parabens, sulphates, or synthetic fragrances. High-performance actives only.</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">✧</div>
+    <div class="trust-title">Cruelty Free</div>
+    <div class="trust-desc">Every product and every treatment — ethically formulated and tested.</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services">
+  <p class="section-label">Our Expertise</p>
+  <h2 class="section-h2">Treatments built for <em>your skin.</em></h2>
+  <p style="max-width: 480px; color: var(--warm-gray); font-size: 15px; line-height: 1.7;">
+    We specialise in complex skin concerns. Every treatment is designed, assessed, and delivered by trained aestheticians working alongside clinical protocols — not guesswork.
+  </p>
+
+  <div class="services-grid">
+    <a href="/skin-clinic" class="service-card">
+      <span class="service-num">01</span>
+      <div class="service-name">Skin Care Clinic</div>
+      <div class="service-desc">Clinical treatment for hyperpigmentation, acne, sunburn, and dermatological concerns. Combined with our proprietary SkincareByReflection™ product line for lasting results.</div>
+      <div class="service-link">Explore →</div>
+    </a>
+    <a href="/facials" class="service-card">
+      <span class="service-num">02</span>
+      <div class="service-name">Facials & Skin Treatments</div>
+      <div class="service-desc">From brightening and anti-ageing to deep cleansing and acne facials — every treatment is personalised to your skin type and concern at the time of your visit.</div>
+      <div class="service-link">Explore →</div>
+    </a>
+    <a href="/medical-spa" class="service-card">
+      <span class="service-num">03</span>
+      <div class="service-name">Medical Spa</div>
+      <div class="service-desc">Advanced procedures including electrocautery for skin tag, mole, and wart removal, alongside full-body massages and sauna. Clinical precision, spa atmosphere.</div>
+      <div class="service-link">Explore →</div>
+    </a>
+    <a href="/teeth-whitening" class="service-card">
+      <span class="service-num">04</span>
+      <div class="service-name">Teeth Whitening</div>
+      <div class="service-desc">Professional scaling, polishing, and teeth whitening by trained practitioners. Painless, immediate, and built around your overall facial confidence — not just your smile.</div>
+      <div class="service-link">Explore →</div>
+    </a>
+    <a href="/skincare" class="service-card">
+      <span class="service-num">05</span>
+      <div class="service-name">SkincareByReflection™</div>
+      <div class="service-desc">Our proprietary skincare line — formulated in partnership with our clinic team. Real actives, honest ingredients, developed and tested on real clients with real results.</div>
+      <div class="service-link">Shop →</div>
+    </a>
+    <a href="/book" class="service-card">
+      <span class="service-num">06</span>
+      <div class="service-name">Skin Consultation</div>
+      <div class="service-desc">Not sure where to start? Book a consultation with our therapists. We assess your skin, map your concerns, and build a treatment plan — clinical, clear, and honest.</div>
+      <div class="service-link">Book Now →</div>
+    </a>
+  </div>
+</section>
+
+<!-- CLINIC INTRO -->
+<section class="clinic-intro">
+  <div class="clinic-intro-left">
+    <p class="section-label">The Clinic</p>
+    <h2 class="section-h2">Where the <em>science</em><br>was built.</h2>
+    <p style="color: var(--warm-gray); font-size: 15px; line-height: 1.8; margin-bottom: 32px; max-width: 440px;">
+      Reflection Beauty Clinic is a specialised skin clinic in Alimosho, Lagos. Our professional treatment rooms are where our formulas were born — our in-house team tests on real clients, observes real results, and constantly refines what we offer. What reaches your hands has been through the hands of experts first.
+    </p>
+    <a href="/clinic" class="btn-primary">Explore the Clinic</a>
+  </div>
+  <div class="clinic-intro-right">
+    <div class="clinic-quote">
+      "Real skin. Real results. No mystery — just science and care."
+    </div>
+    <div class="clinic-address">
+      <strong>Reflection Beauty Clinic</strong><br>
+      10 Idimu Road, Egbeda bus stop<br>
+      Alimosho, Lagos 102213<br><br>
+      <strong>Mon – Sat</strong> · 9:00 am – 6:00 pm<br>
+      <a href="/book" style="color: rgba(250,249,246,0.6); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;">Book a Visit →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TREATMENTS TABLE -->
+<section class="treatments">
+  <p class="section-label">What We Treat</p>
+  <h2 class="section-h2">Targeted treatments <em>for every concern.</em></h2>
+
+  <table class="treatments-table">
+    <thead>
+      <tr>
+        <th>Treatment</th>
+        <th>Category</th>
+        <th>Duration</th>
+        <th>Book</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="treat-name">Hyperpigmentation Facial</td>
+        <td class="treat-cat">Skin Clinic</td>
+        <td class="treat-duration">60 min</td>
+        <td><a href="/book" class="treat-book">Book</a></td>
+      </tr>
+      <tr>
+        <td class="treat-name">Acne & Breakout Treatment</td>
+        <td class="treat-cat">Skin Clinic</td>
+        <td class="treat-duration">75 min</td>
+        <td><a href="/book" class="treat-book">Book</a></td>
+      </tr>
+      <tr>
+        <td class="treat-name">Brightening Facial</td>
+        <td class="treat-cat">Facials</td>
+        <td class="treat-duration">60 min</td>
+        <td><a href="/book" class="treat-book">Book</a></td>
+      </tr>
+      <tr>
+        <td class="treat-name">Anti-Ageing Facial</td>
+        <td class="treat-cat">Facials</td>
+        <td class="treat-duration">75 min</td>
+        <td><a href="/book" class="treat-book">Book</a></td>
+      </tr>
+      <tr>
+        <td class="treat-name">Skin Tag & Mole Removal (Electrocautery)</td>
+        <td class="treat-cat">Medical Spa</td>
+        <td class="treat-duration">30 min</td>
+        <td><a href="/book" class="treat-book">Book</a></td>
+      </tr>
+      <tr>
+        <td class="treat-name">Full Body Massage</td>
+        <td class="treat-cat">Medical Spa</td>
+        <td class="treat-duration">60 min</td>
+        <td><a href="/book" class="treat-book">Book</a></td>
+      </tr>
+      <tr>
+        <td class="treat-name">Professional Teeth Whitening</td>
+        <td class="treat-cat">Dental Beauty</td>
+        <td class="treat-duration">45 min</td>
+        <td><a href="/book" class="treat-book">Book</a></td>
+      </tr>
+      <tr>
+        <td class="treat-name">Scaling & Polishing</td>
+        <td class="treat-cat">Dental Beauty</td>
+        <td class="treat-duration">45 min</td>
+        <td><a href="/book" class="treat-book">Book</a></td>
+      </tr>
+      <tr>
+        <td class="treat-name">Deep Cleansing Facial</td>
+        <td class="treat-cat">Facials</td>
+        <td class="treat-duration">60 min</td>
+        <td><a href="/book" class="treat-book">Book</a></td>
+      </tr>
+      <tr>
+        <td class="treat-name">Chemical Peel</td>
+        <td class="treat-cat">Advanced Treatments</td>
+        <td class="treat-duration">45 min</td>
+        <td><a href="/book" class="treat-book">Book</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="margin-top: 28px;">
+    <a href="/treatments" class="btn-ghost">View All Treatments</a>
+  </div>
+</section>
+
+<!-- SKINCARE PRODUCTS -->
+<section class="products">
+  <p class="section-label">SkincareByReflection™</p>
+  <h2 class="section-h2">The clinic, <em>bottled.</em></h2>
+  <p style="max-width: 440px; color: var(--warm-gray); font-size: 15px; line-height: 1.7; margin-bottom: 8px;">
+    Every product in our collection was developed in-house, tested on our clinic clients, and refined until it worked. No fillers, no mystery. Just high-performance actives built for African skin.
+  </p>
+
+  <div class="products-grid">
+    <a href="/skincare/vitamin-c-serum" class="product-card">
+      <div class="product-img"><span class="product-img-label">Product Image</span></div>
+      <div class="product-name">Vitamin C Face Serum</div>
+      <div class="product-desc">15% Vitamin C + 5% Niacinamide. Brightening, dark spot reduction, luminous finish.</div>
+      <div class="product-price">₦45,000</div>
+    </a>
+    <a href="/skincare/flawless-face-cream" class="product-card">
+      <div class="product-img"><span class="product-img-label">Product Image</span></div>
+      <div class="product-name">Reflection Flawless Face Cream</div>
+      <div class="product-desc">Intensive moisturisation and skin-evening for all skin types. Clinic-born formula.</div>
+      <div class="product-price">₦38,000</div>
+    </a>
+    <a href="/skincare/flawless-toning-milk" class="product-card">
+      <div class="product-img"><span class="product-img-label">Product Image</span></div>
+      <div class="product-name">Flawless Toning Milk</div>
+      <div class="product-desc">Lightweight daily toner that balances, refines, and prepares skin for actives.</div>
+      <div class="product-price">₦32,000</div>
+    </a>
+    <a href="/skincare/midnight-retinol-oil" class="product-card">
+      <div class="product-img"><span class="product-img-label">Product Image</span></div>
+      <div class="product-name">Midnight Retinol Oil</div>
+      <div class="product-desc">Overnight renewal. A stable retinol-in-oil formula designed for Lagos-climate skin.</div>
+      <div class="product-price">₦52,000</div>
+    </a>
+  </div>
+  <div style="margin-top: 32px; display: flex; gap: 20px;">
+    <a href="/skincare" class="btn-primary">Shop All Products</a>
+    <a href="/skin-quiz" class="btn-ghost">Take the Skin Quiz</a>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="proof">
+  <div class="proof-left">
+    <div class="proof-stars">★★★★★</div>
+    <div class="proof-rating">4.9</div>
+    <div class="proof-count">Based on Google Reviews<br>Reflection Beauty Clinic</div>
+  </div>
+  <div class="proof-right">
+    <div class="reviews-scroll">
+      <div class="review-card">
+        <div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">"Reflection beauty clinic is the best place to be. They helped me with my hyperpigmentation — results I'd been chasing for years."</div>
+        </div>
+        <div class="review-author">Google Review · Alimosho</div>
+      </div>
+      <div class="review-card">
+        <div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">"My skin literally glowed after 2 weeks on the Vitamin C Face Serum. I've never had this many compliments."</div>
+        </div>
+        <div class="review-author">Priya K. · Combination Skin</div>
+      </div>
+      <div class="review-card">
+        <div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">"After my Reflection Facial at the clinic, I booked a second appointment before I even left. Incredible experience."</div>
+        </div>
+        <div class="review-author">Marcus T. · Oily / Acne-prone</div>
+      </div>
+      <div class="review-card">
+        <div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">"The Flawless Toning Milk is the first product that hasn't broken me out. Rich, and it actually works."</div>
+        </div>
+        <div class="review-author">Sophie L. · Sensitive Skin</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy">
+  <div class="phil-left">
+    <p class="section-label">Our Approach</p>
+    <h2 class="section-h2">We believe luxury<br>skincare <em>shouldn't<br>be a mystery.</em></h2>
+    <p style="color: var(--warm-gray); font-size: 14px; line-height: 1.8; margin-top: 24px; max-width: 400px;">
+      Every Reflection product is built on peer-reviewed science, honest ingredient lists, and a deep respect for your skin's natural intelligence. Our clinic team works alongside our formulators — testing on real clients, observing real results.
+    </p>
+  </div>
+  <div class="phil-right">
+    <div class="phil-points">
+      <div class="phil-point">
+        <div class="phil-point-title">Formulated for African skin</div>
+        <div class="phil-point-desc">Our products are developed and tested in Lagos, on the skin types that actually walk through our clinic doors — not adapted from European formulations.</div>
+      </div>
+      <div class="phil-point">
+        <div class="phil-point-title">No proprietary blends. Full transparency.</div>
+        <div class="phil-point-desc">We list every active, every concentration. You know exactly what you're putting on your skin and why it's there.</div>
+      </div>
+      <div class="phil-point">
+        <div class="phil-point-title">Clinic-to-consumer pipeline</div>
+        <div class="phil-point-desc">Products are only released once they've been validated in our treatment rooms. If it doesn't work in the clinic, it doesn't reach the shelf.</div>
+      </div>
+      <div class="phil-point">
+        <div class="phil-point-title">Sustainable & cruelty-free</div>
+        <div class="phil-point-desc">No animal testing at any stage of development. We're working towards refillable packaging and reduced-footprint production.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location">
+  <div class="location-left">
+    <p class="section-label">Visit Us</p>
+    <h2 class="section-h2">Find us in <em>Alimosho,</em><br>Lagos.</h2>
+    <p style="color: var(--warm-gray); font-size: 15px; line-height: 1.8; margin: 24px 0 36px; max-width: 440px;">
+      We're located on Idimu Road at Egbeda bus stop — easily accessible from Ikotun, Iyana Ipaja, Gowon Estate, Shasha, and across Alimosho LGA. Walk-ins welcome. Consultations by appointment.
+    </p>
+    <a href="https://g.page/reflection-beauty-clinic" class="btn-primary" target="_blank">Get Directions</a>
+  </div>
+  <div class="location-right">
+    <!-- REPLACE with Google Maps embed of GBP location -->
+    <div class="location-map-placeholder">Google Maps Embed Here</div>
+    <div class="location-details">
+      <strong>Reflection Beauty Clinic</strong><br>
+      10 Idimu Road, Egbeda bus stop<br>
+      Alimosho, Lagos 102213<br><br>
+      <strong>Hours</strong><br>
+      Monday – Saturday · 9:00 am – 6:00 pm<br>
+      Sunday · Closed
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">Reflection</div>
+      <div class="footer-tagline">A skin clinic, medical spa, and skincare brand<br>rooted in Alimosho, Lagos.</div>
+    </div>
+    <div>
+      <div class="footer-col-title">Clinic</div>
+      <ul class="footer-links">
+        <li><a href="/skin-clinic">Skin Care Clinic</a></li>
+        <li><a href="/facials">Facials</a></li>
+        <li><a href="/medical-spa">Medical Spa</a></li>
+        <li><a href="/teeth-whitening">Teeth Whitening</a></li>
+        <li><a href="/book">Book a Visit</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Skincare</div>
+      <ul class="footer-links">
+        <li><a href="/skincare">Shop All</a></li>
+        <li><a href="/skincare/vitamin-c-serum">Vitamin C Serum</a></li>
+        <li><a href="/skincare/flawless-face-cream">Flawless Face Cream</a></li>
+        <li><a href="/skincare/midnight-retinol-oil">Midnight Retinol Oil</a></li>
+        <li><a href="/skin-quiz">Skin Quiz</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="/about">About</a></li>
+        <li><a href="/journal">Journal</a></li>
+        <li><a href="/locations">Locations</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/privacy">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Reflection Beauty Clinic. All rights reserved.</span>
+    <span>10 Idimu Rd, Egbeda, Alimosho, Lagos</span>
+  </div>
+</footer>
+
+</body>
+</html>

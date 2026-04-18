@@ -39,25 +39,25 @@ export default function Footer() {
     <footer className="footer">
       {/* Newsletter */}
       <div className="footer__newsletter">
-        <div className="container">
-          <div className="footer__newsletter-inner">
-            <div className="footer__newsletter-text">
-              <span className="label-gold">Join the Ritual</span>
-              <h3>Your skin deserves better.</h3>
-              <p>Subscribe for early access, skincare education, and members-only offers.</p>
-            </div>
+        <div className="container container-sm">
+          <div className="footer__newsletter-content">
+            <h2 className="display-sm">Ritual refinement, delivered.</h2>
+            <p className="body-md">Subscribe for early access, skin education, and members-only offers.</p>
+            
             <form className="footer__newsletter-form" onSubmit={e => e.preventDefault()}>
-              <div className="footer__newsletter-input-wrap">
+              <div className="footer__newsletter-field">
                 <input
                   type="email"
-                  placeholder="Your email address"
-                  className="form-input"
+                  placeholder="name@email.com"
+                  className="newsletter-input"
                   aria-label="Email for newsletter"
                 />
-                <button type="submit" className="btn btn-gold">Subscribe</button>
+                <button type="submit" className="newsletter-submit">
+                  JOIN THE RITUAL
+                </button>
               </div>
               <p className="footer__newsletter-legal">
-                By subscribing you agree to our <Link to="/privacy">Privacy Policy</Link>. No spam, ever.
+                By subscribing you agree to our <Link to="/privacy">Privacy Policy</Link>.
               </p>
             </form>
           </div>
