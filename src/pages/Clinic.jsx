@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
 import { getClinicServices } from '../lib/api';
 import { Link } from 'react-router-dom';
+import { useReveal } from '../hooks/useReveal';
+import { ArrowRight } from 'lucide-react';
 import './Clinic.css';
 
 export default function Clinic() {
   const [clinicServices, setClinicServices] = useState([]);
   const [loading, setLoading] = useState(true);
+  useReveal([loading]);
 
   useEffect(() => {
     async function loadData() {
@@ -22,65 +25,78 @@ export default function Clinic() {
 
   return (
     <div className="clinic-page page-enter">
-      {/* Hero */}
-      <section className="clinic-hero">
-        <div className="clinic-hero__bg" style={{ background: 'linear-gradient(135deg, #1A1614 0%, #3D2B1F 100%)' }} />
-        <div className="clinic-hero__content container">
-          <span className="label" style={{ color: 'rgba(255,255,255,0.7)', marginBottom: '1rem', display: 'block' }}>Reflection Beauty Clinic</span>
-          <h1 className="display-lg" style={{ color: 'var(--cream)', marginBottom: '1.5rem' }}>
-            Where science meets sanctuary.
-          </h1>
-          <p className="body-lg" style={{ color: 'rgba(255,255,255,0.8)', maxWidth: '600px', marginBottom: '2rem' }}>
-            Our central London clinic is the birthplace of all Reflection formulas. Experience our clinical-grade treatments delivered by expert aestheticians in an environment of absolute calm.
-          </p>
-          <a href="#treatments" className="btn btn-outline" style={{ color: 'white', borderColor: 'white' }}>View Treatments</a>
-        </div>
-      </section>
-
-      {/* Philosophy */}
-      <section className="section clinic-philosophy">
-        <div className="container container-sm text-center">
-          <span className="label-gold">Our Philosophy</span>
-          <h2 className="heading-lg" style={{ margin: '1rem 0' }}>Results-driven, ritual-focused.</h2>
-          <div className="divider" />
-          <p className="body-lg" style={{ marginTop: '1rem' }}>
-            We believe that clinical results don't require sterile environments. Our treatments combine medical-grade equipment and our potent in-house actives with lymphatic drainage, structural massage, and deep relaxation protocols. You leave with profoundly changed skin and a restored mind.
-          </p>
-        </div>
-      </section>
-
-      {/* Treatments Menu */}
-      <section id="treatments" className="section clinic-treatments" style={{ background: 'var(--pearl)' }}>
+      {/* ── PAGE HEADER ── */}
+      <section className="page-title-bar">
         <div className="container">
-          <div className="section-header">
-            <h2>Treatment Menu</h2>
-            <p>From advanced collagen induction to restorative rituals.</p>
+          <span className="label">Reflection Beauty Clinic</span>
+          <h1 className="page-title-bar__heading">Where science meets <em>sanctuary.</em></h1>
+          <p className="page-title-bar__sub">Clinical-grade treatments in an environment of absolute calm.</p>
+          <a href="#treatments" className="btn btn-outline" style={{ marginTop: '2rem', display: 'inline-flex' }}>View Treatments</a>
+        </div>
+      </section>
+
+      {/* ── PHILOSOPHY SPLIT ── */}
+      <section className="premium-split-section container">
+        <div className="premium-split-text reveal-on-scroll">
+          <p className="section-eyebrow">Our Philosophy</p>
+          <h2 className="display-md">Results-driven,<br/><em>ritual-focused.</em></h2>
+          <p className="body-lg" style={{ marginBottom: '1.5rem', color: 'var(--gray-dark)' }}>
+            We believe that clinical results don't require sterile environments. Our treatments combine medical-grade equipment and potent in-house actives with lymphatic drainage, structural massage, and deep relaxation protocols.
+          </p>
+          <p className="body-lg" style={{ color: 'var(--gray-dark)' }}>
+            You leave with profoundly changed skin and a restored mind.
+          </p>
+        </div>
+        
+        <div className="premium-split-grid reveal-on-scroll stagger-2">
+           <div className="premium-grid-img img-corner-1" style={{ backgroundImage: "url('/reflectio webp/water on skin.webp')" }} />
+           <div className="premium-grid-img img-corner-2 glass-overlay" style={{ backgroundImage: "url('/reflectio webp/Hand.webp')" }} />
+           <div className="premium-grid-img img-corner-3 glass-overlay" style={{ backgroundImage: "url('/reflectio webp/back.webp')" }} />
+           <div className="premium-grid-img img-corner-4" style={{ backgroundImage: "url('/reflectio webp/face skin.webp')" }} />
+        </div>
+      </section>
+
+      {/* ── TREATMENTS MENU ── */}
+      <section id="treatments" className="section clinic-treatments" style={{ background: 'var(--white)', padding: '6rem 0' }}>
+        <div className="container">
+          <div className="section-header reveal-on-scroll">
+            <span className="label" style={{ display: 'block', marginBottom: '1rem' }}>Treatment Menu</span>
+            <h2 className="section-h2" style={{ marginBottom: '1rem' }}>From advanced collagen induction<br/>to <em>restorative rituals.</em></h2>
           </div>
           
-          <div className="clinic-menu grid-2">
-            {clinicServices.map(service => (
-              <div key={service.id} className="clinic-service-card">
+          <div className="clinic-menu" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem', marginTop: '4rem' }}>
+            {clinicServices.map((service, idx) => (
+              <div key={service.id} className={`clinic-service-card reveal-on-scroll stagger-${(idx % 4) + 1}`}>
                 <div className="clinic-service-card__header">
                   <h3 className="clinic-service-card__name">{service.name}</h3>
-                  <span className="clinic-service-card__price">£{service.price}</span>
+                  <span className="clinic-service-card__price">₦{Number(service.price).toLocaleString('en-NG')}</span>
                 </div>
                 <span className="clinic-service-card__meta">{service.duration} · {service.category}</span>
                 <p className="clinic-service-card__desc">{service.description}</p>
-                <button className="btn btn-ghost" style={{ marginTop: '1.5rem' }}>Book Now</button>
+                <button className="btn btn-outline" style={{ marginTop: '2rem', width: '100%' }}>Book Now</button>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Booking CTA */}
-      <section className="section clinic-booking text-center">
-        <div className="container container-sm">
-          <h2 className="heading-lg mb-3">Begin your journey to better skin.</h2>
-          <p className="body-lg mb-4">Not sure which treatment is right for you? Book an initial consultation with one of our skin experts. They will map your skin and prescribe a tailored treatment plan.</p>
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-            <button className="btn btn-primary">Book Consultation — £50</button>
-            <Link to="/contact" className="btn btn-outline">Contact the Clinic</Link>
+      {/* ── BOOKING BANNER ── */}
+      <section className="lifestyle-banner container reveal-on-scroll" style={{ marginTop: '4rem', marginBottom: '8rem' }}>
+        <div className="lifestyle-banner__inner" style={{ minHeight: '500px' }}>
+          <div className="lifestyle-banner__bg premium-gradient-2" />
+          <div className="lifestyle-banner__content">
+            <h2 className="display-md banner-title reveal-on-scroll stagger-1">Begin your journey<br/>to <em>better skin.</em></h2>
+            <p className="body-lg banner-sub reveal-on-scroll stagger-2">
+              Not sure which treatment is right for you? Book an initial consultation with one of our skin experts. They will map your skin and prescribe a tailored treatment plan.
+            </p>
+            <div className="banner-actions reveal-on-scroll stagger-3">
+              <Link to="/contact" className="btn btn-primary">
+                Book Consultation <ArrowRight size={20} />
+              </Link>
+              <Link to="/contact" className="btn btn-dark-outline">
+                Contact the Clinic
+              </Link>
+            </div>
           </div>
         </div>
       </section>

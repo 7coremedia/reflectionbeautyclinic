@@ -2,6 +2,8 @@ import { useState, useMemo, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
 import { getProducts, getCategories } from '../lib/api';
+import { useReveal } from '../hooks/useReveal';
+import { ArrowRight } from 'lucide-react';
 import './Shop.css';
 
 export default function Shop() {
@@ -9,10 +11,10 @@ export default function Shop() {
   const activeCategory = searchParams.get('category') || 'all';
   const [sort, setSort] = useState('default');
   const [searchQuery, setSearchQuery] = useState('');
-
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
+  useReveal([loading]);
 
   useEffect(() => {
     async function loadData() {
@@ -31,11 +33,11 @@ export default function Shop() {
     let result = activeCategory === 'all' ? products : products.filter(p => p.category === activeCategory);
     if (searchQuery) result = result.filter(p =>
       p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.subtitle.toLowerCase().includes(searchQuery.toLowerCase())
+      p.subtitle?.toLowerCase().includes(searchQuery.toLowerCase())
     );
     if (sort === 'price-asc') result = [...result].sort((a, b) => a.price - b.price);
     if (sort === 'price-desc') result = [...result].sort((a, b) => b.price - a.price);
-    if (sort === 'rating') result = [...result].sort((a, b) => b.rating - a.rating);
+    if (sort === 'rating') result = [...result].sort((a, b) => (b.rating || 0) - (a.rating || 0));
     return result;
   }, [activeCategory, sort, searchQuery, products]);
 
@@ -45,18 +47,18 @@ export default function Shop() {
 
   return (
     <div className="shop page-enter">
-      {/* Page Header */}
-      <div className="shop-hero">
+      {/* ── PAGE HEADER ── */}
+      <section className="page-title-bar">
         <div className="container">
           <span className="label">The Collection</span>
-          <h1 className="shop-hero__title">Shop Reflection</h1>
-          <p className="shop-hero__sub">Science-backed formulas for every skin concern. Discover your ritual.</p>
+          <h1 className="page-title-bar__heading">Shop <em>Reflection.</em></h1>
+          <p className="page-title-bar__sub">Science-backed formulas for every skin concern.</p>
         </div>
-      </div>
+      </section>
 
       <div className="shop-body container">
         {/* Filters */}
-        <div className="shop-filters">
+        <div className="shop-filters reveal-on-scroll">
           <div className="shop-filters__cats">
             {categories.map(cat => (
               <button
@@ -97,15 +99,19 @@ export default function Shop() {
         </div>
 
         {/* Result count */}
-        <p className="shop-count body-md">{filtered.length} product{filtered.length !== 1 ? 's' : ''}</p>
+        <p className="shop-count body-md reveal-on-scroll">{filtered.length} product{filtered.length !== 1 ? 's' : ''}</p>
 
         {/* Grid */}
         {filtered.length > 0 ? (
           <div className="shop-grid">
-            {filtered.map(p => <ProductCard key={p.id} product={p} />)}
+            {filtered.map((p, idx) => (
+              <div key={p.id} className={`reveal-on-scroll stagger-${(idx % 4) + 1}`}>
+                <ProductCard product={p} />
+              </div>
+            ))}
           </div>
         ) : (
-          <div className="shop-empty">
+          <div className="shop-empty reveal-on-scroll">
             <p className="shop-empty__title">No products found</p>
             <p className="shop-empty__sub">Try a different search or category.</p>
           </div>
@@ -113,17 +119,22 @@ export default function Shop() {
       </div>
 
       {/* Skin Quiz CTA */}
-      <div className="shop-quiz-cta">
-        <div className="container">
-          <div className="shop-quiz-cta__inner">
-            <div>
-              <h3>Need help choosing?</h3>
-              <p>Our skin quiz finds your perfect Reflection routine in 2 minutes.</p>
+      <section className="lifestyle-banner container reveal-on-scroll" style={{ marginTop: '0', marginBottom: '8rem' }}>
+        <div className="lifestyle-banner__inner">
+          <div className="lifestyle-banner__bg premium-gradient-3" />
+          <div className="lifestyle-banner__content">
+            <h2 className="display-md banner-title reveal-on-scroll stagger-1">Need help <em>choosing?</em></h2>
+            <p className="body-lg banner-sub reveal-on-scroll stagger-2">
+              Our clinical skin quiz analyzes your primary concerns, climate, and sensitivity to build a precise, results-driven Reflection routine in 2 minutes.
+            </p>
+            <div className="banner-actions reveal-on-scroll stagger-3">
+              <a href="/rituals" className="btn btn-primary">
+                Take the Quiz <ArrowRight size={20} />
+              </a>
             </div>
-            <a href="/rituals" className="btn btn-gold">Take the Quiz →</a>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

@@ -1,11 +1,13 @@
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getBlogPostById } from '../lib/api';
+import { useReveal } from '../hooks/useReveal';
 
 export default function BlogPost() {
   const { id } = useParams();
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
+  useReveal([loading]);
 
   useEffect(() => {
     async function loadData() {
@@ -31,10 +33,10 @@ export default function BlogPost() {
   }
 
   return (
-    <article className="blog-post page-enter" style={{ paddingTop: '72px', background: 'var(--cream)', minHeight: '100vh', paddingBottom: 'var(--space-3xl)' }}>
+    <article className="blog-post page-enter" style={{ paddingTop: '72px', background: 'var(--base-bg)', minHeight: '100vh', paddingBottom: 'var(--space-3xl)' }}>
       {/* Header Visual */}
       <div 
-        className="blog-post__visual"
+        className="blog-post__visual reveal-on-scroll"
         style={{ 
           height: '50vh', 
           minHeight: '400px',
@@ -47,20 +49,20 @@ export default function BlogPost() {
         </div>
       </div>
 
-      <div className="container container-sm" style={{ marginTop: '-4rem', position: 'relative', zIndex: 10 }}>
-        <div style={{ background: 'var(--warm-white)', padding: '3rem 4rem', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-sm)' }}>
-          <div className="journal-meta" style={{ justifyContent: 'center', marginBottom: '1.5rem' }}>
+      <div className="container container-sm reveal-on-scroll stagger-1" style={{ marginTop: '-4rem', position: 'relative', zIndex: 10 }}>
+        <div style={{ background: 'var(--white)', padding: '3rem 4rem', borderRadius: 'var(--radius-lg)', boxShadow: '0 20px 40px rgba(0,0,0,0.05)' }}>
+          <div className="journal-meta" style={{ justifyContent: 'center', marginBottom: '1.5rem', opacity: 0.7 }}>
             <span>{post.date}</span>
             <span>·</span>
             <span>{post.readTime}</span>
           </div>
           <h1 className="display-md" style={{ textAlign: 'center', marginBottom: '2rem' }}>{post.title}</h1>
-          <p className="body-lg" style={{ textAlign: 'center', color: 'var(--stone)', marginBottom: '3rem', fontStyle: 'italic' }}>
+          <p className="body-lg" style={{ textAlign: 'center', color: 'var(--gray-dark)', marginBottom: '3rem', fontStyle: 'italic' }}>
             {post.excerpt}
           </p>
-          <div className="divider" style={{ marginBottom: '3rem' }} />
+          <div className="divider" style={{ marginBottom: '3rem', marginInline: 'auto' }} />
 
-          <div className="blog-post__content body-lg" style={{ color: 'var(--charcoal)' }}>
+          <div className="blog-post__content body-lg" style={{ color: 'var(--black-soft)' }}>
             {post.content ? (
               <div dangerouslySetInnerHTML={{ __html: post.content }} />
             ) : (
@@ -68,7 +70,7 @@ export default function BlogPost() {
                 <p style={{ marginBottom: '1.5rem' }}>
                   The skin barrier, or stratum corneum, is the outermost layer of your epidermis. Think of it as a brick wall: your skin cells are the bricks, and the lipid matrix (ceramides, cholesterol, and fatty acids) is the mortar holding it all together. When this wall is intact, moisture stays in, and irritants stay out.
                 </p>
-                <div style={{ padding: '2rem', background: 'var(--cream-dark)', borderRadius: 'var(--radius-md)', margin: '2rem 0', fontStyle: 'italic', textAlign: 'center', color: 'var(--near-black)' }}>
+                <div style={{ padding: '2rem', background: 'var(--gray-lighter)', borderRadius: 'var(--radius-md)', margin: '2rem 0', fontStyle: 'italic', textAlign: 'center', color: 'var(--black-soft)' }}>
                   "Healthy skin is resilient skin. Focus on the barrier first, and the rest will follow." — Reflection Clinic Team
                 </div>
               </div>
