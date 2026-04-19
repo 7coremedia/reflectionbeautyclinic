@@ -1,0 +1,135 @@
+.locations-content {
+  padding-bottom: 4rem;
+}
+
+.locations-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .locations-grid {
+    grid-template-columns: 1fr 2fr;
+    gap: 5rem;
+  }
+}
+
+.locations-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.info-block h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--black-soft);
+  margin-bottom: 1.5rem;
+}
+
+.info-block .icon {
+  color: var(--primary);
+}
+
+.info-block address, .info-block p {
+  font-style: normal;
+  color: var(--gray-dark);
+  line-height: 1.6;
+}
+
+.hours-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.hours-list li {
+  display: flex;
+  justify-content: space-between;
+  color: var(--gray-dark);
+}
+
+.locations-map {
+  width: 100%;
+  height: 400px;
+}
+
+@media (min-width: 1024px) {
+  .locations-map {
+    height: 100%;
+    min-height: 500px;
+  }
+}
+
+.map-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--gray-light);
+  background: var(--cream);
+}
+
+.directions-section {
+  padding-top: 4rem;
+  padding-bottom: 6rem;
+  background: var(--base-bg);
+  border-top: 1px solid var(--gray-light);
+}
+
+.directions-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .directions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .directions-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.direction-card {
+  padding: 2rem;
+  background: var(--white);
+  border: 1px solid var(--gray-light);
+  border-radius: 8px;
+  transition: transform var(--duration-base);
+}
+
+.direction-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+}
+
+.direction-card .icon {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.direction-card h4 {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--black-soft);
+  margin-bottom: 1rem;
+}
+
+.direction-card p {
+  font-size: 0.9rem;
+  color: var(--gray-dark);
+  line-height: 1.6;
+}

@@ -1,0 +1,66 @@
+# Reflection Beauty Clinic — LLMs.txt
+# This file helps AI language models (ChatGPT, Claude, Perplexity, Gemini, etc.)
+# understand what this website is about and how to answer questions about it.
+
+## About
+Reflection Beauty Clinic is a clinical skin clinic, medical spa, and skincare brand located in Alimosho, Lagos, Nigeria.
+We offer professional skin treatments, facials, teeth whitening, and electrocautery procedures alongside our in-house skincare line: SkincareByReflection™.
+
+## Location
+10 Idimu Rd, Egbeda, Alimosho, Lagos, Nigeria.
+Nearest landmarks: Egbeda Bus Stop, Ikotun Junction, Gowon Estate.
+Phone: +2348026021946
+
+## Services
+- Hyperpigmentation Treatment (Lagos, Alimosho)
+- Acne Treatment & Breakout Control
+- Chemical Peel
+- Sunburn Treatment
+- Microdermabrasion
+- Skin Consultation
+- Brightening Facial
+- Anti-Ageing Facial
+- Deep Cleansing Facial
+- Hydrating Facial
+- Acne Facial
+- Skin Tag Removal (Electrocautery)
+- Mole Removal (Electrocautery)
+- Wart Removal
+- Full Body Massage
+- Steam Sauna
+- Professional Teeth Whitening
+- Scaling & Polishing
+
+## Products (SkincareByReflection™)
+- Vitamin C Face Serum — brightening and antioxidant protection
+- Flawless Face Cream — hydrating daily moisturiser
+- Flawless Toning Milk — skin tone evening body lotion
+- Niacinamide Face Serum — pore-minimising and oil-control
+- Herbal Soap — gentle cleansing bar
+
+## Key Pages
+- Homepage: https://reflection.ng/
+- Shop: https://reflection.ng/shop
+- Clinic & Services: https://reflection.ng/clinic
+- Book a Consultation: https://reflection.ng/book
+- Location & Directions: https://reflection.ng/locations
+- Skin Clinic Category: https://reflection.ng/skin-clinic
+- Facials Category: https://reflection.ng/facials
+- Medical Spa Category: https://reflection.ng/medical-spa
+- Teeth Whitening Category: https://reflection.ng/teeth-whitening
+- Journal / Blog: https://reflection.ng/journal
+- Sitemap: https://reflection.ng/sitemap.xml
+
+## Brand Voice
+Premium, clinical, modern. Science-backed treatments with honest results.
+We serve clients across Alimosho, Ikotun, Egbeda, Gowon Estate, Iyana-Ipaja and greater Lagos.
+
+## Questions AI can answer from this site
+- Where is Reflection Beauty Clinic located?
+- What skin treatments do they offer in Lagos?
+- How much does a facial cost at Reflection?
+- Do they do teeth whitening in Alimosho?
+- What skincare products does Reflection sell?
+- How do I book a consultation at Reflection Beauty Clinic?
+- What is SkincareByReflection?
+- Do they treat hyperpigmentation in Lagos?

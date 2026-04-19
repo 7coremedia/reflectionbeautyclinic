@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { supabase } from '../lib/supabase';
+import './Account.css';
 
 export default function Account() {
   const { user, role, signOut, loading: authLoading } = useAuth();
@@ -15,13 +16,10 @@ export default function Account() {
   const [errorMsg, setErrorMsg] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
 
-  // Auto-redirect if they came from a protected route
   const from = location.state?.from?.pathname || '/management';
 
   useEffect(() => {
-    // If we have a user and they are an admin, and we haven't auto-redirected yet
     if (user && role && ['admin', 'manager', 'writer', 'moderator'].includes(role)) {
-       // Optional: Add auto-redirect logic here if desired
        // navigate(from, { replace: true });
     }
   }, [user, role, from, navigate]);
@@ -32,15 +30,11 @@ export default function Account() {
     setErrorMsg('');
     setSuccessMsg('');
 
-    console.log(`Attempting ${isLogin ? 'Login' : 'Signup'} for:`, email);
-
     try {
       if (isLogin) {
         const { data, error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
-        
         setSuccessMsg('Login successful! Redirecting...');
-        // Small delay to let the AuthContext catch up and the user see the success message
         setTimeout(() => {
           if (from.startsWith('/management')) {
             navigate(from, { replace: true });
@@ -48,7 +42,6 @@ export default function Account() {
             navigate('/management', { replace: true });
           }
         }, 1000);
-
       } else {
         const { error } = await supabase.auth.signUp({ email, password });
         if (error) throw error;
@@ -56,122 +49,120 @@ export default function Account() {
         setIsLogin(true);
       }
     } catch (err) {
-      console.error('Auth Error:', err.message);
-      setErrorMsg(err.message === 'Invalid login credentials' 
-        ? 'Invalid email or password. Please try again.' 
+      setErrorMsg(err.message === 'Invalid login credentials'
+        ? 'Invalid email or password. Please try again.'
         : err.message);
     } finally {
       setLoading(false);
     }
   };
 
-  if (authLoading) return <div className="flex-center" style={{ minHeight: '80vh' }}>Verifying session...</div>;
+  if (authLoading) return (
+    <div className="account-page">
+      <div className="account-loading">Verifying session...</div>
+    </div>
+  );
 
-  // Render Dashboard if already authenticated
   if (user) {
     return (
-      <div className="page-enter flex-center flex-column" style={{ paddingTop: '100px', minHeight: '80vh', backgroundColor: 'var(--cream-dark)' }}>
-        <div style={{ background: 'var(--warm-white)', padding: '3rem', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-sm)', textAlign: 'center', maxWidth: '500px', width: '100%' }}>
-          <div className="badge badge-gold mb-3">Verified Session</div>
-          <h1 className="heading-md mb-2">Welcome Back</h1>
-          <p className="body-md" style={{ color: 'var(--stone)', marginBottom: '2rem' }}>{user.email}</p>
-
-          <div style={{ marginBottom: '2rem', padding: '1.5rem', background: 'var(--pearl)', borderRadius: '8px' }}>
-            <span style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--stone)' }}>Access Level</span>
-            <div style={{ fontSize: '1.4rem', fontWeight: '600', color: 'var(--near-black)', textTransform: 'capitalize', marginTop: '0.5rem' }}>{role}</div>
+      <div className="account-page page-enter">
+        <div className="account-split">
+          <div className="account-brand-panel">
+            <div className="account-brand-inner">
+              <span className="account-brand-eyebrow">Welcome back</span>
+              <h1 className="account-brand-headline">Your<br /><em>Reflection</em><br />Portal.</h1>
+              <p className="account-brand-sub">Clinical care, craft products, and your clinic — all in one secure dashboard.</p>
+            </div>
           </div>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            {['admin', 'manager', 'writer', 'moderator'].includes(role) ? (
-              <Link to="/management" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
-                Enter Admin Dashboard →
-              </Link>
-            ) : (
-              <Link to="/shop" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
-                Continue Shopping
-              </Link>
-            )}
-            <button onClick={signOut} className="btn btn-outline" style={{ width: '100%', justifyContent: 'center' }}>Sign Out</button>
+          <div className="account-form-panel">
+            <div className="account-card">
+              <div className="account-session-badge">Verified Session</div>
+              <h2 className="account-card-title">Welcome Back</h2>
+              <p className="account-card-email">{user.email}</p>
+              <div className="account-role-chip">
+                <span className="account-role-label">Access Level</span>
+                <span className="account-role-value">{role}</span>
+              </div>
+              <div className="account-card-actions">
+                {['admin', 'manager', 'writer', 'moderator'].includes(role) ? (
+                  <Link to="/management" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
+                    Enter Admin Dashboard →
+                  </Link>
+                ) : (
+                  <Link to="/shop" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
+                    Continue Shopping
+                  </Link>
+                )}
+                <button onClick={signOut} className="btn btn-outline" style={{ width: '100%', justifyContent: 'center' }}>
+                  Sign Out
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     );
   }
 
-  // Render Auth Forms if logged out
   return (
-    <div className="page-enter flex-center" style={{ paddingTop: '100px', minHeight: '80vh', backgroundColor: 'var(--cream-dark)' }}>
-      <div className="container" style={{ maxWidth: '480px' }}>
-        <div style={{ background: 'var(--warm-white)', padding: '3rem', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-sm)' }}>
-          <div className="text-center mb-4">
-            <h1 className="heading-lg" style={{ marginBottom: '0.5rem' }}>{isLogin ? 'Reflection Portal' : 'Create Account'}</h1>
-            <p className="body-md" style={{ color: 'var(--stone)' }}>
-              {isLogin ? 'Sign in to manage the clinic and shop.' : 'Join the Reflection community today.'}
-            </p>
+    <div className="account-page page-enter">
+      <div className="account-split">
+        <div className="account-brand-panel">
+          <div className="account-brand-inner">
+            <span className="account-brand-eyebrow">Reflection Beauty Clinic</span>
+            <h1 className="account-brand-headline">Skin that<br /><em>reflects</em><br />who you are.</h1>
+            <p className="account-brand-sub">Sign in to manage clinic operations, view orders, publish posts, and more.</p>
           </div>
+        </div>
+        <div className="account-form-panel">
+          <div className="account-card">
+            <h2 className="account-card-title">{isLogin ? 'Portal Sign In' : 'Create Account'}</h2>
+            <p className="account-card-subtitle">{isLogin ? 'Access your management dashboard.' : 'Join the Reflection community.'}</p>
 
-          {errorMsg && (
-            <div style={{ color: '#d32f2f', marginBottom: '1.5rem', fontSize: '0.9rem', textAlign: 'center', background: '#ffebee', padding: '0.75rem', borderRadius: '4px', border: '1px solid #ffcdd2' }}>
-              {errorMsg}
-            </div>
-          )}
+            {errorMsg && (
+              <div className="account-alert account-alert--error">{errorMsg}</div>
+            )}
+            {successMsg && (
+              <div className="account-alert account-alert--success">{successMsg}</div>
+            )}
 
-          {successMsg && (
-            <div style={{ color: '#2e7d32', marginBottom: '1.5rem', fontSize: '0.9rem', textAlign: 'center', background: '#e8f5e9', padding: '0.75rem', borderRadius: '4px', border: '1px solid #c8e6c9' }}>
-              {successMsg}
-            </div>
-          )}
-
-          <form onSubmit={handleAuth} id="login-form">
-            <div className="admin-form-group mb-3">
-              <label style={{ fontSize: '0.8rem', marginBottom: '0.4rem', display: 'block' }}>Email Address</label>
-              <input 
-                type="email" 
-                className="form-input" 
-                placeholder="name@example.com" 
-                required 
-                style={{ width: '100%' }} 
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-              />
-            </div>
-            <div className="admin-form-group mb-4">
-              <label style={{ fontSize: '0.8rem', marginBottom: '0.4rem', display: 'block' }}>Password</label>
-              <input 
-                type="password" 
-                className="form-input" 
-                placeholder="••••••••" 
-                required 
-                style={{ width: '100%' }} 
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-              />
-            </div>
-            
-            <button 
-              type="submit" 
-              className="btn btn-primary" 
-              style={{ width: '100%', justifyContent: 'center', height: '50px', fontSize: '1rem' }} 
-              disabled={loading}
-            >
-              {loading ? (
-                <span style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                   Authenticating...
-                </span>
-              ) : (isLogin ? 'Sign In to Dashboard' : 'Create Account')}
-            </button>
-          </form>
-          
-          <div className="text-center mt-4 pt-4" style={{ borderTop: '1px solid var(--sand)' }}>
-            <p className="body-md" style={{ color: 'var(--stone)' }}>
-              {isLogin ? "Don't have an account? " : "Already have an account? "}
-              <button 
-                onClick={() => setIsLogin(!isLogin)} 
-                style={{ color: 'var(--near-black)', fontWeight: '600', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline' }}
+            <form onSubmit={handleAuth} id="login-form">
+              <div className="account-field">
+                <label>Email Address</label>
+                <input
+                  type="email"
+                  placeholder="name@example.com"
+                  required
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                />
+              </div>
+              <div className="account-field">
+                <label>Password</label>
+                <input
+                  type="password"
+                  placeholder="••••••••"
+                  required
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                />
+              </div>
+              <button
+                type="submit"
+                className="btn btn-primary"
+                style={{ width: '100%', justifyContent: 'center', height: '54px', fontSize: '1rem', marginTop: '1.5rem' }}
+                disabled={loading}
               >
+                {loading ? 'Authenticating...' : (isLogin ? 'Sign In to Dashboard' : 'Create Account')}
+              </button>
+            </form>
+
+            <div className="account-toggle">
+              {isLogin ? "Don't have an account? " : "Already have an account? "}
+              <button onClick={() => setIsLogin(!isLogin)}>
                 {isLogin ? 'Sign up' : 'Sign in'}
               </button>
-            </p>
+            </div>
           </div>
         </div>
       </div>

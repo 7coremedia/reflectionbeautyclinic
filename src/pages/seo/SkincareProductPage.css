@@ -1,0 +1,143 @@
+.product-showcase {
+  padding-bottom: 6rem;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .product-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+  }
+}
+
+.product-image-container {
+  background: var(--cream);
+  border: 1px solid var(--gray-light);
+  border-radius: 8px;
+  overflow: hidden;
+  height: 50vh;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .product-image-container {
+    height: 70vh;
+    position: sticky;
+    top: 120px;
+  }
+}
+
+.product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-details .display-sm {
+  margin-bottom: 0.5rem;
+  color: var(--black-soft);
+  line-height: 1.1;
+}
+
+.product-price {
+  font-family: var(--font-sans);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--gray-dark);
+  margin-bottom: 2rem;
+}
+
+.product-description {
+  color: var(--black-soft);
+  margin-bottom: 2.5rem;
+}
+
+.add-to-cart-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.product-values {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--gray-light);
+}
+
+.value-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--black-soft);
+  letter-spacing: 0.05em;
+}
+
+.value-item svg {
+  color: var(--primary);
+}
+
+.product-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.accordion-item h4 {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--black-soft);
+  margin-bottom: 0.75rem;
+}
+
+.accordion-item p {
+  font-size: 0.95rem;
+  color: var(--gray-dark);
+  line-height: 1.6;
+}
+
+.related-treatment {
+  padding: 2rem;
+  background: var(--cream-darker, #edebdf);
+  border-radius: 8px;
+  border: 1px solid var(--gray-light);
+}
+
+.related-treatment h4 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--black-soft);
+  margin-bottom: 0.5rem;
+}
+
+.related-treatment p {
+  font-size: 0.9rem;
+  color: var(--gray-dark);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}

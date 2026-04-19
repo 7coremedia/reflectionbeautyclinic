@@ -2,29 +2,124 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <meta name="theme-color" content="#1d2521" />
+    <meta name="msapplication-TileColor" content="#1d2521" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Reflection — Luxury skincare rooted in science. Discover transformative serums, rituals, and the Reflection Beauty Clinic spa experience." />
+
+    <!-- Primary SEO -->
     <title>Beauty Clinic Alimosho Lagos | Reflection Beauty Clinic</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <meta name="description" content="Reflection Beauty Clinic — skin treatments, facials, medical spa, teeth whitening & skincare products in Alimosho, Lagos. Science-backed. Clinically led." />
+    <meta name="keywords" content="beauty clinic Alimosho, skin clinic Lagos, hyperpigmentation treatment Lagos, facials Alimosho, medical spa Lagos, teeth whitening Lagos, skincare products Nigeria" />
+    <meta name="author" content="Reflection Beauty Clinic" />
+    <link rel="canonical" href="https://reflection.ng/" />
+
+    <!-- Open Graph (Facebook, WhatsApp, LinkedIn, AI scrapers) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Reflection Beauty Clinic" />
+    <meta property="og:title" content="Beauty Clinic Alimosho Lagos | Reflection Beauty Clinic" />
+    <meta property="og:description" content="Clinical skin treatments, facials, medical spa, teeth whitening and science-led skincare products in Alimosho, Lagos." />
+    <meta property="og:url" content="https://reflection.ng/" />
+    <meta property="og:image" content="https://reflection.ng/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Reflection Beauty Clinic — Clinical Skin Care in Alimosho Lagos" />
+    <meta property="og:locale" content="en_NG" />
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Beauty Clinic Alimosho Lagos | Reflection Beauty Clinic" />
+    <meta name="twitter:description" content="Clinical skin treatments, facials, medical spa, and science-led skincare in Alimosho, Lagos." />
+    <meta name="twitter:image" content="https://reflection.ng/og-image.jpg" />
+
+    <!-- Geo & Local signals -->
+    <meta name="geo.region" content="NG-LA" />
+    <meta name="geo.placename" content="Alimosho, Lagos, Nigeria" />
+    <meta name="geo.position" content="6.5989892;3.2910781" />
+    <meta name="ICBM" content="6.5989892, 3.2910781" />
+
+    <!-- AI Crawlers & LLM discoverability -->
+    <link rel="me" href="https://reflection.ng/" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+    <!-- Schema.org (full rich snippet) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "BeautySalon",
-      "name": "Reflection Beauty Clinic",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "bus stop, 10 Idimu Rd, Egbeda",
-        "addressLocality": "Lagos",
-        "postalCode": "102213",
-        "addressRegion": "Lagos",
-        "addressCountry": "NG"
-      },
-      "telephone": "+2348026021946"
+      "@graph": [
+        {
+          "@type": "BeautySalon",
+          "@id": "https://reflection.ng/#localbusiness",
+          "name": "Reflection Beauty Clinic",
+          "alternateName": "Reflection Clinic Alimosho",
+          "description": "Clinical skin clinic, medical spa, facials, teeth whitening and SkincareByReflection™ products in Alimosho, Lagos.",
+          "url": "https://reflection.ng",
+          "telephone": "+2348026021946",
+          "image": "https://reflection.ng/og-image.jpg",
+          "logo": "https://reflection.ng/favicon.svg",
+          "priceRange": "₦₦₦",
+          "currenciesAccepted": "NGN",
+          "paymentAccepted": "Cash, Bank Transfer",
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+              "opens": "09:00",
+              "closes": "18:00"
+            }
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "10 Idimu Rd, Egbeda",
+            "addressLocality": "Alimosho",
+            "addressRegion": "Lagos",
+            "postalCode": "102213",
+            "addressCountry": "NG"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 6.5989892,
+            "longitude": 3.2910781
+          },
+          "hasMap": "https://www.google.com/maps/place/Reflection+Beauty+Clinic",
+          "sameAs": [
+            "https://www.instagram.com/reflectionbeautyclinic",
+            "https://www.facebook.com/reflectionbeautyclinic"
+          ],
+          "areaServed": [
+            "Alimosho", "Ikotun", "Egbeda", "Gowon Estate", "Iyana-Ipaja", "Lagos"
+          ],
+          "serviceType": [
+            "Skin Clinic", "Facials", "Medical Spa", "Teeth Whitening", "Hyperpigmentation Treatment", "Acne Treatment", "Chemical Peel"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://reflection.ng/#website",
+          "url": "https://reflection.ng",
+          "name": "Reflection Beauty Clinic",
+          "description": "Clinical skin clinic and skincare brand in Alimosho, Lagos",
+          "publisher": { "@id": "https://reflection.ng/#localbusiness" },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://reflection.ng/shop?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          }
+        }
+      ]
     }
     </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   </head>
   <body>
     <div id="root"></div>

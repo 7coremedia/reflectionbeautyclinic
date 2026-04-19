@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Core Pages -->
+  <url><loc>https://reflection.ng/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://reflection.ng/shop</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://reflection.ng/clinic</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://reflection.ng/journal</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://reflection.ng/about</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://reflection.ng/book</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://reflection.ng/locations</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  
+  <!-- Category Pages -->
+  <url><loc>https://reflection.ng/skin-clinic</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://reflection.ng/facials</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://reflection.ng/medical-spa</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://reflection.ng/teeth-whitening</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+
+  <!-- Service Pages: Skin Clinic -->
+  <url><loc>https://reflection.ng/skin-clinic/hyperpigmentation-treatment-lagos</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://reflection.ng/skin-clinic/acne-treatment-alimosho-lagos</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://reflection.ng/skin-clinic/chemical-peel-lagos</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://reflection.ng/skin-clinic/sunburn-treatment-lagos</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://reflection.ng/skin-clinic/microdermabrasion-alimosho-lagos</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://reflection.ng/skin-clinic/skin-consultation-lagos</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Service Pages: Facials -->
+  <url><loc>https://reflection.ng/facials/brightening-facial-lagos</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://reflection.ng/facials/anti-ageing-facial-alimosho-lagos</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://reflection.ng/facials/deep-cleansing-facial-lagos</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://reflection.ng/facials/acne-facial-alimosho-lagos</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://reflection.ng/facials/hydrating-facial-lagos</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Service Pages: Medical Spa -->
+  <url><loc>https://reflection.ng/medical-spa/skin-tag-removal-lagos</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://reflection.ng/medical-spa/mole-removal-alimosho-lagos</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://reflection.ng/medical-spa/wart-removal-lagos</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://reflection.ng/medical-spa/body-massage-alimosho-lagos</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://reflection.ng/medical-spa/sauna-alimosho-lagos</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Service Pages: Teeth Whitening -->
+  <url><loc>https://reflection.ng/teeth-whitening/professional-teeth-whitening-lagos</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://reflection.ng/teeth-whitening/scaling-polishing-alimosho-lagos</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://reflection.ng/teeth-whitening/dental-beauty-treatment-lagos</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Skincare Products -->
+  <url><loc>https://reflection.ng/skincare/vitamin-c-serum</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://reflection.ng/skincare/flawless-face-cream</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://reflection.ng/skincare/flawless-toning-milk</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://reflection.ng/skincare/midnight-retinol-oil</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+</urlset>

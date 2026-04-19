@@ -2,15 +2,62 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 import CartDrawer from './CartDrawer';
 import './Navbar.css';
 
 const navLinks = [
   { label: 'Shop', href: '/shop' },
-  { label: 'Clinic', href: '/clinic' },
-  { label: 'Rituals', href: '/rituals' },
+  { label: 'Clinic & Services', href: '#', hasMegaMenu: true },
+  { label: 'Discover', href: '/rituals' },
   { label: 'Journal', href: '/journal' },
   { label: 'Our Story', href: '/about' },
+];
+
+const megaMenuCategories = [
+  {
+    title: 'Skin Clinic',
+    path: '/skin-clinic',
+    image: '/reflectio webp/face skin.webp',
+    links: [
+      { label: 'Hyperpigmentation', href: '/skin-clinic/hyperpigmentation-treatment-lagos' },
+      { label: 'Acne Treatment', href: '/skin-clinic/acne-treatment-alimosho-lagos' },
+      { label: 'Chemical Peel', href: '/skin-clinic/chemical-peel-lagos' },
+      { label: 'Skin Consultation', href: '/skin-clinic/skin-consultation-lagos' }
+    ]
+  },
+  {
+    title: 'Facials',
+    path: '/facials',
+    image: '/reflectio webp/water on skin.webp',
+    links: [
+      { label: 'Brightening Facial', href: '/facials/brightening-facial-lagos' },
+      { label: 'Anti-Ageing Facial', href: '/facials/anti-ageing-facial-alimosho-lagos' },
+      { label: 'Deep Cleansing', href: '/facials/deep-cleansing-facial-lagos' },
+      { label: 'Acne Facial', href: '/facials/acne-facial-alimosho-lagos' }
+    ]
+  },
+  {
+    title: 'Medical Spa',
+    path: '/medical-spa',
+    image: '/reflectio webp/back.webp',
+    links: [
+      { label: 'Skin Tag Removal', href: '/medical-spa/skin-tag-removal-lagos' },
+      { label: 'Mole Removal', href: '/medical-spa/mole-removal-alimosho-lagos' },
+      { label: 'Body Massage', href: '/medical-spa/body-massage-alimosho-lagos' },
+      { label: 'Sauna', href: '/medical-spa/sauna-alimosho-lagos' }
+    ]
+  },
+  {
+    title: 'Teeth Whitening',
+    path: '/teeth-whitening',
+    image: '/reflectio webp/smile.webp', // Add a smile/teeth placeholder if needed, fallback to Hand
+    links: [
+      { label: 'Professional Whitening', href: '/teeth-whitening/professional-teeth-whitening-lagos' },
+      { label: 'Scaling & Polishing', href: '/teeth-whitening/scaling-polishing-alimosho-lagos' },
+      { label: 'Dental Beauty', href: '/teeth-whitening/dental-beauty-treatment-lagos' }
+    ]
+  }
 ];
 
 const tickerItems = [
@@ -25,6 +72,7 @@ const tickerContent = [...tickerItems, ...tickerItems];
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeMegaMenu, setActiveMegaMenu] = useState(false);
   const { count, setIsOpen } = useCart();
   const location = useLocation();
 
@@ -77,14 +125,66 @@ export default function Navbar() {
           {/* Desktop Nav Center */}
           <ul className="navbar__links" role="list">
             {navLinks.map(link => (
-              <li key={link.href}>
-                <Link
-                  to={link.href}
-                  className={`navbar__link ${location.pathname.startsWith(link.href) ? 'navbar__link--active' : ''}`}
-                >
-                  {link.label}
-                  <span className="navbar__link-dot" />
-                </Link>
+              <li 
+                key={link.label}
+                className={link.hasMegaMenu ? 'has-mega-menu' : ''}
+                onMouseEnter={() => link.hasMegaMenu && setActiveMegaMenu(true)}
+                onMouseLeave={() => link.hasMegaMenu && setActiveMegaMenu(false)}
+              >
+                {link.hasMegaMenu ? (
+                  <button className={`navbar__link ${activeMegaMenu ? 'navbar__link--active' : ''}`}>
+                    {link.label}
+                    <span className="navbar__link-dot" />
+                  </button>
+                ) : (
+                  <Link
+                    to={link.href}
+                    className={`navbar__link ${location.pathname.startsWith(link.href) && link.href !== '/' ? 'navbar__link--active' : ''}`}
+                  >
+                    {link.label}
+                    <span className="navbar__link-dot" />
+                  </Link>
+                )}
+
+                {/* MEGA MENU DROPDOWN */}
+                {link.hasMegaMenu && (
+                  <AnimatePresence>
+                    {activeMegaMenu && (
+                      <motion.div 
+                        className="mega-menu-dropdown"
+                        initial={{ opacity: 0, y: 15 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                      >
+                        <div className="mega-menu-inner container">
+                           {megaMenuCategories.map(cat => (
+                             <div key={cat.title} className="mega-menu-column">
+                               <Link to={cat.path} className="mega-menu-image-link" onClick={() => setActiveMegaMenu(false)}>
+                                 <div className="mega-menu-image">
+                                   <img src={cat.image} alt={cat.title} onError={(e) => { e.target.src = '/reflectio webp/Hand.webp'; }} />
+                                   <div className="mega-menu-image-overlay">
+                                     <span className="mega-menu-cat-title">{cat.title} <ArrowRight size={16} /></span>
+                                   </div>
+                                 </div>
+                               </Link>
+                               <ul className="mega-menu-list">
+                                 {cat.links.map(sublink => (
+                                   <li key={sublink.href}>
+                                     <Link to={sublink.href} onClick={() => setActiveMegaMenu(false)}>{sublink.label}</Link>
+                                   </li>
+                                 ))}
+                                 <li>
+                                   <Link to={cat.path} className="view-all-link" onClick={() => setActiveMegaMenu(false)}>View all {cat.title.toLowerCase()}</Link>
+                                 </li>
+                               </ul>
+                             </div>
+                           ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                )}
               </li>
             ))}
           </ul>
@@ -151,7 +251,7 @@ export default function Navbar() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.1 + i * 0.05 }}
                     >
-                      <Link to={link.href} className="mobile-overlay__link">
+                      <Link to={link.href === '#' ? '/clinic' : link.href} className="mobile-overlay__link" onClick={() => setMenuOpen(false)}>
                         <span className="link-num">0{i + 1}</span>
                         <span className="link-label">{link.label}</span>
                       </Link>

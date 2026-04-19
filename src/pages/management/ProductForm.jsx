@@ -83,12 +83,15 @@ export default function ProductForm() {
     }
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div className="admin-loading">Loading product...</div>;
 
   return (
     <div>
       <div className="admin-header">
-        <h1 className="admin-title">{isEditing ? 'Edit Product' : 'New Product'}</h1>
+        <div>
+          <p className="admin-eyebrow">Management / Products</p>
+          <h1 className="admin-title">{isEditing ? 'Edit Product' : 'New Product'}</h1>
+        </div>
       </div>
 
       <div className="admin-form-card">
@@ -161,10 +164,10 @@ export default function ProductForm() {
             <label>Product Image</label>
             {formData.image_url && !imageFile && (
               <div style={{ marginBottom: '1rem' }}>
-                <img src={formData.image_url} alt="Current Product" style={{ width: '100px', height: '100px', objectFit: 'cover', borderRadius: '4px', border: '1px solid #ddd' }} />
+                <img src={formData.image_url} alt="Current Product" style={{ width: '100px', height: '100px', objectFit: 'cover', borderRadius: '12px', border: '1px solid var(--gray-light)' }} />
               </div>
             )}
-            <input type="file" accept="image/*" onChange={(e) => setImageFile(e.target.files[0])} />
+            <input type="file" accept="image/*" onChange={(e) => setImageFile(e.target.files[0])} style={{ padding: '0.75rem 0' }} />
           </div>
 
           <div className="admin-form-group">
@@ -172,7 +175,7 @@ export default function ProductForm() {
             <textarea name="ingredients" value={formData.ingredients} onChange={handleChange} style={{minHeight: '80px'}} />
           </div>
 
-          <div style={{ display: 'flex', gap: '1rem' }}>
+          <div className="admin-form-submit">
             <button type="submit" className="btn btn-primary" disabled={uploadingImage}>
               {uploadingImage ? 'Uploading & Saving...' : (isEditing ? 'Save Changes' : 'Create Product')}
             </button>

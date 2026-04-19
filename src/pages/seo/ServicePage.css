@@ -1,0 +1,129 @@
+.breadcrumb-nav {
+  padding-top: calc(48px + min(10vh, 100px) + 2rem);
+  padding-bottom: 1rem;
+}
+
+.breadcrumb-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--gray-dark);
+  text-decoration: none;
+  transition: color var(--duration-fast);
+}
+
+.breadcrumb-link:hover {
+  color: var(--primary);
+}
+
+.service-price {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-top: 1rem;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: rgba(12, 30, 22, 0.05); /* very light primary variant */
+  border-radius: 4px;
+}
+
+.service-content-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  padding-bottom: 6rem;
+}
+
+@media (min-width: 1024px) {
+  .service-content-section {
+    grid-template-columns: 2fr 1fr;
+    gap: 6rem;
+  }
+}
+
+.service-main-copy {
+  color: var(--black-soft);
+}
+
+.service-main-copy h2 {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  margin: 2.5rem 0 1rem;
+  color: var(--primary);
+}
+
+.service-main-copy h3 {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+}
+
+.service-main-copy p {
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+.service-main-copy ul {
+  margin: 1.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.service-main-copy li {
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+.service-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.booking-card {
+  padding: 2.5rem;
+  border-radius: 8px;
+  background: var(--white);
+  border: 1px solid var(--gray-light);
+  text-align: center;
+}
+
+.booking-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--black-soft);
+}
+
+.booking-card p {
+  color: var(--gray-dark);
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+
+.location-card {
+  padding: 2rem;
+  background: var(--cream-darker, #edebdf);
+  border-radius: 8px;
+}
+
+.location-card h4 {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  color: var(--gray-dark);
+}
+
+.location-card address {
+  font-style: normal;
+  line-height: 1.6;
+  color: var(--black-soft);
+}

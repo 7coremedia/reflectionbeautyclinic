@@ -1,0 +1,266 @@
+/* ============================================
+   ACCOUNT.CSS — Premium Split Screen Auth
+   ============================================ */
+
+.account-page {
+  min-height: 100vh;
+  background: var(--base-bg);
+}
+
+.account-split {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ── LEFT: BRAND PANEL ── */
+.account-brand-panel {
+  flex: 0 0 50%;
+  background: linear-gradient(135deg, #1d2521 0%, #2e3d35 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.account-brand-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/reflectio webp/face skin.webp') center / cover no-repeat;
+  opacity: 0.12;
+}
+
+.account-brand-inner {
+  position: relative;
+  z-index: 2;
+}
+
+.account-brand-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.5);
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.account-brand-headline {
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 5vw, 5rem);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin: 0 0 1.5rem;
+}
+
+.account-brand-headline em {
+  font-style: italic;
+  color: var(--primary);
+}
+
+.account-brand-sub {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.6;
+  max-width: 380px;
+}
+
+/* ── RIGHT: FORM PANEL ── */
+.account-form-panel {
+  flex: 0 0 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 4rem;
+  background: var(--base-bg);
+}
+
+.account-card {
+  width: 100%;
+  max-width: 420px;
+}
+
+.account-session-badge {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  background: var(--primary);
+  color: var(--black-soft);
+  padding: 0.3rem 0.8rem;
+  border-radius: 99px;
+  margin-bottom: 1.5rem;
+}
+
+.account-card-title {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  color: var(--black-soft);
+  margin: 0 0 0.5rem;
+}
+
+.account-card-subtitle {
+  font-family: var(--font-sans);
+  color: var(--gray-dark);
+  font-size: 0.95rem;
+  margin: 0 0 2.5rem;
+}
+
+.account-card-email {
+  font-family: var(--font-sans);
+  color: var(--gray-dark);
+  font-size: 0.95rem;
+  margin: 0 0 2rem;
+}
+
+.account-role-chip {
+  background: var(--white);
+  border: 1px solid var(--gray-light);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.account-role-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gray-dark);
+  font-family: var(--font-sans);
+  font-weight: 600;
+}
+
+.account-role-value {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--black-soft);
+  text-transform: capitalize;
+  font-family: var(--font-serif);
+  letter-spacing: -0.02em;
+}
+
+.account-card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ── FORM FIELDS ── */
+.account-field {
+  margin-bottom: 1.25rem;
+}
+
+.account-field label {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--black-soft);
+  margin-bottom: 0.5rem;
+}
+
+.account-field input {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  background: var(--white);
+  border: 1px solid var(--gray-light);
+  border-radius: 10px;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--black-soft);
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.account-field input:focus {
+  border-color: var(--black-soft);
+  box-shadow: 0 0 0 3px rgba(12, 30, 22, 0.06);
+}
+
+/* ── ALERTS ── */
+.account-alert {
+  padding: 0.85rem 1.25rem;
+  border-radius: 10px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.account-alert--error {
+  background: #fff0f0;
+  border: 1px solid #ffc8c8;
+  color: #c62828;
+}
+
+.account-alert--success {
+  background: #f0faf4;
+  border: 1px solid #b2dfdb;
+  color: #2e7d32;
+}
+
+/* ── TOGGLE ── */
+.account-toggle {
+  text-align: center;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--gray-light);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--gray-dark);
+}
+
+.account-toggle button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--black-soft);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ── LOADING ── */
+.account-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  font-family: var(--font-sans);
+  color: var(--gray-dark);
+}
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .account-split {
+    flex-direction: column;
+  }
+
+  .account-brand-panel {
+    flex: none;
+    padding: 6rem 2rem 3rem;
+    min-height: 45vh;
+  }
+
+  .account-brand-headline {
+    font-size: clamp(2.5rem, 10vw, 3.5rem);
+  }
+
+  .account-form-panel {
+    flex: none;
+    padding: 3rem 1.5rem;
+  }
+}

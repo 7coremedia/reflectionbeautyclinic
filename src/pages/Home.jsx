@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import SEO from '../components/SEO';
 import { getProducts } from '../lib/api';
+import GetStartedModal from '../components/GetStartedModal';
 import { Star, ArrowRight, ShieldCheck, CheckCircle2, Leaf, FlaskConical, ChevronLeft, ChevronRight, Play } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
 import './Home.css';
@@ -41,6 +42,7 @@ export default function Home() {
   const [products, setProducts] = useState([]);
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: 'start' });
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isModalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     async function loadData() {
@@ -150,27 +152,51 @@ export default function Home() {
               <div className="stars">
                 {[1,2,3,4,5].map(i => <Star key={i} size={16} fill="var(--star-color)" color="var(--star-color)" />)}
               </div>
-              <span>Based on Google Reviews for Reflection Clinic</span>
+              <span style={{ fontSize: '0.8rem', fontWeight: 600 }}>Based on Google Reviews for Reflection Clinic</span>
             </div>
             
             <h1 className="hero-headline display-lg reveal-on-scroll stagger-1">
-              Skin that <em>reflects</em> who you are.
+              Skin that <em>reflects</em> <br /> who you are.
             </h1>
             <p className="hero-subhead body-lg reveal-on-scroll stagger-2">
               A clinical skin clinic, medical spa, and skincare brand in the heart of Alimosho. We treat real skin concerns with professional-grade treatments and science-led products.
             </p>
             
             <div className="hero-actions reveal-on-scroll stagger-3">
-              <Link to="/clinic#consult" className="btn btn-primary hero-btn">
-                Book a Consultation <ArrowRight size={20} />
-              </Link>
-              <Link to="/clinic" className="btn btn-outline hero-btn-ghost">
-                View Treatments
+              <button 
+                className="btn hero-btn get-started-btn" 
+                onClick={() => setModalOpen(true)}
+              >
+                Get Started <ArrowRight size={20} />
+              </button>
+              <Link to="/rituals" className="btn desktop-hero-btn desktop-only">
+                Discover a secret... <ArrowRight size={20} />
               </Link>
             </div>
+
           </div>
         </div>
       </section>
+      
+      <GetStartedModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
+
+      {/* ── VALIDATION BAR (Immediately after Hero) ── */}
+      <div className="hero-trust-bar reveal-on-scroll">
+        <div className="container hero-trust-badges">
+          <div className="hero-trust-item">
+            <ShieldCheck size={16} className="hero-trust-icon" />
+            <span><strong>Dermatologist Tested:</strong> Every formula verified.</span>
+          </div>
+          <div className="hero-trust-item">
+            <FlaskConical size={16} className="hero-trust-icon" />
+            <span><strong>Clinically Backed:</strong> Professional-grade results.</span>
+          </div>
+          <div className="hero-trust-item">
+            <Leaf size={16} className="hero-trust-icon" />
+            <span><strong>Clean Formulation:</strong> No parabens or sulphates.</span>
+          </div>
+        </div>
+      </div>
 
       {/* ── LIFESTYLE BANNER (Dark Gradient) ── */}
       <section className="lifestyle-banner container reveal-on-scroll">
@@ -193,23 +219,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── VALIDATION STRIP ── */}
-      <div className="validation-strip reveal-on-scroll">
-        <div className="container validation-strip__grid">
-           <div className="validation-item reveal-on-scroll stagger-1">
-             <ShieldCheck size={28} className="val-icon" />
-             <span><strong>Dermatologist Tested:</strong> Every formula verified before reaching your skin.</span>
-           </div>
-           <div className="validation-item reveal-on-scroll stagger-2">
-             <FlaskConical size={28} className="val-icon" />
-             <span><strong>Clinically Backed:</strong> Professional-grade results for complex concerns.</span>
-           </div>
-           <div className="validation-item reveal-on-scroll stagger-3">
-             <Leaf size={28} className="val-icon" />
-             <span><strong>Clean Formulation:</strong> No parabens, sulphates, or synthetic fragrances.</span>
-           </div>
-        </div>
-      </div>
+
 
       {/* ── PRESS / TRUST LOGOS ── */}
       <section className="press-section container reveal-on-scroll">

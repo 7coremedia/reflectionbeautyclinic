@@ -1,14 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getBlogPosts, deleteBlogPost } from '../../lib/api';
+import { Plus } from 'lucide-react';
 
 export default function ManageBlog() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    loadPosts();
-  }, []);
+  useEffect(() => { loadPosts(); }, []);
 
   async function loadPosts() {
     setLoading(true);
@@ -18,7 +17,7 @@ export default function ManageBlog() {
   }
 
   async function handleDelete(id) {
-    if (window.confirm("Are you sure you want to delete this blog post?")) {
+    if (window.confirm("Delete this post? This cannot be undone.")) {
       try {
         await deleteBlogPost(id);
         setPosts(posts.filter(p => p.id !== id));
@@ -28,13 +27,20 @@ export default function ManageBlog() {
     }
   }
 
-  if (loading) return <div>Loading Journal Entries...</div>;
+  if (loading) return (
+    <div className="admin-loading">Loading journal entries...</div>
+  );
 
   return (
     <div>
       <div className="admin-header">
-        <h1 className="admin-title">Journal Entries</h1>
-        <Link to="/management/blog/new" className="btn btn-primary">Create Post</Link>
+        <div>
+          <p className="admin-eyebrow">Management</p>
+          <h1 className="admin-title">Journal Entries</h1>
+        </div>
+        <Link to="/management/blog/new" className="btn btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <Plus size={18} /> Create Post
+        </Link>
       </div>
 
       <div className="admin-table-wrapper">
@@ -44,20 +50,29 @@ export default function ManageBlog() {
               <th>Title</th>
               <th>Category</th>
               <th>Date</th>
-              <th>Time to Read</th>
+              <th>Read Time</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {posts.length === 0 ? (
-              <tr><td colSpan="5" style={{ textAlign: 'center' }}>No posts found.</td></tr>
+              <tr><td colSpan="5" className="admin-empty-cell">No posts yet. Create your first entry.</td></tr>
             ) : (
               posts.map(post => (
                 <tr key={post.id}>
                   <td>
-                    <strong>{post.title}</strong>
+                    <span className="admin-cell-title">{post.title}</span>
+                    {post.excerpt && (
+                      <span className="admin-cell-sub" style={{ maxWidth: '300px', display: 'block', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        {post.excerpt}
+                      </span>
+                    )}
                   </td>
-                  <td>{post.category}</td>
+                  <td>
+                    <span className="admin-status-badge" style={{ background: 'var(--base-bg)', color: 'var(--black-soft)' }}>
+                      {post.category}
+                    </span>
+                  </td>
                   <td>{post.date}</td>
                   <td>{post.read_time}</td>
                   <td>

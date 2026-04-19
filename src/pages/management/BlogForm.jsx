@@ -140,12 +140,15 @@ export default function BlogForm() {
     }
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div className="admin-loading">Loading entry...</div>;
 
   return (
     <div>
       <div className="admin-header">
-        <h1 className="admin-title">{isEditing ? 'Edit Entry' : 'New Journal Entry'}</h1>
+        <div>
+          <p className="admin-eyebrow">Management / Journal</p>
+          <h1 className="admin-title">{isEditing ? 'Edit Entry' : 'New Journal Entry'}</h1>
+        </div>
       </div>
 
       <div className="admin-form-card">
@@ -190,8 +193,8 @@ export default function BlogForm() {
             </div>
           </div>
 
-          <div style={{ display: 'flex', gap: '1rem' }}>
-            <button type="submit" className="btn btn-primary">{isEditing ? 'Save Changes' : 'Create Post'}</button>
+          <div className="admin-form-submit">
+            <button type="submit" className="btn btn-primary">{isEditing ? 'Save Changes' : 'Publish Post'}</button>
             <button type="button" onClick={() => navigate('/management/blog')} className="btn btn-outline">Cancel</button>
           </div>
         </form>
