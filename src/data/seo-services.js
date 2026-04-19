@@ -114,11 +114,11 @@ export const categoriesData = [
   },
   {
     id: 'medical-spa',
-    title: 'Medical Spa Alimosho Lagos | Reflection Beauty Clinic',
-    h1: 'Medical Spa in Alimosho, Lagos',
+    title: 'Best Spa in Alimosho Lagos | Massage & Wellness | Reflection',
+    h1: 'Medical Spa & Wellness in Alimosho, Lagos',
     path: '/medical-spa',
-    keywords: 'medical spa Alimosho Lagos, med spa Lagos, spa Egbeda Lagos',
-    copy: 'Our medical spa combines clinical procedures with spa-level experience. Advanced treatments like electrocautery for skin tag, mole, and wart removal sit alongside full-body massages and sauna — all under one roof in Alimosho. Precision meets relaxation.',
+    keywords: 'spa in Alimosho, massage Lagos, best spa Alimosho, medical spa Lagos, luxury spa Egbeda, body spa Alimosho',
+    copy: 'Reflection Beauty Clinic is the premier destination for clinical wellness and relaxation in Alimosho. Our medical spa combines advanced procedures like electrocautery with premium spa experiences including full-body massages and deep-heat sauna treatments. Discover a sanctuary where clinical precision meets total rejuvenation.',
     services: [
       {
         id: 'skin-tag-removal-lagos',
@@ -147,20 +147,51 @@ export const categoriesData = [
       },
       {
         id: 'body-massage-alimosho-lagos',
-        title: 'Body Massage Alimosho Lagos | Reflection Medical Spa',
+        title: 'Full Body Massage Alimosho Lagos | Luxury Spa Massage',
         h1: 'Full Body Massage in Alimosho, Lagos',
         path: '/medical-spa/body-massage-alimosho-lagos',
-        keywords: 'body massage Alimosho, full body massage Lagos, spa massage Egbeda Lagos',
+        keywords: 'body massage Alimosho, full body massage Lagos, spa massage Egbeda Lagos, wellness center Alimosho',
         priceRange: '₦15,000 – ₦30,000',
         relatedProducts: [],
+        body: `
+          <p class="lead">Experience the most refined full-body massage in Alimosho at the Reflection Beauty Clinic & Spa. Our therapists are trained in multiple modalities—from deep tissue and Swedish to clinical wellness massage—ensuring that every session relieves tension, improves circulation, and provides deep mental clarity.</p>
+
+          <h3>The Premier Massage Experience in Lagos</h3>
+          <p>Conveniently located in Egbeda, our spa serves clients across Alimosho looking for an escape from the intensity of Lagos life. We utilize premium, clinic-grade essential oils and advanced massage techniques to target chronic muscle pain, stress-induced tightness, and lymphatic congestion.</p>
+
+          <h3>Why Reflection Spa for Massage?</h3>
+          <p>Unlike crowded salons, Reflection provides a sterile, clinical-grade environment that remains warm and luxurious. Our massage rooms are temperature-controlled, acoustically private, and designed for total sensory deprivation from the outside world.</p>
+          <ul>
+            <li><strong>Therapeutic Precision:</strong> We don't just "rub" skin; we address muscle anatomy.</li>
+            <li><strong>Premium Oils:</strong> We use SkincareByReflection™ base blends that nourish while they work.</li>
+            <li><strong>Cleanliness:</strong> Clinical hygiene standards in a spa setting.</li>
+          </ul>
+
+          <h3>Benefits of Regular Spa Massage</h3>
+          <p>Beyond relaxation, clinical massage helps regulate cortisol levels, improves sleep quality, and supports skin health by increasing blood flow to the dermis. Whether you are recovering from a long week or looking to maintain your wellness routine, our Alimosho spa is your neighborhood sanctuary.</p>
+        `
       },
       {
         id: 'sauna-alimosho-lagos',
-        title: 'Sauna Alimosho Lagos | Reflection Medical Spa',
-        h1: 'Sauna in Alimosho, Lagos',
+        title: 'Sauna & Steam Room Alimosho Lagos | Reflection Spa',
+        h1: 'Sauna & Deep Heat Therapy in Alimosho, Lagos',
         path: '/medical-spa/sauna-alimosho-lagos',
-        keywords: 'sauna Lagos, sauna Alimosho, spa sauna Egbeda',
+        keywords: 'sauna Lagos, sauna Alimosho, steam room Egbeda, spa sauna Egbeda',
         relatedProducts: [],
+        body: `
+          <p class="lead">Detoxify your body and refresh your mind in our clinical-grade sauna in Alimosho. Deep heat therapy is the perfect complement to our skin treatments, helping to open pores, flush toxins, and relax the nervous system.</p>
+
+          <h3>Revitalize in the Heart of Egbeda</h3>
+          <p>Our sauna facilities are part of our premium Medical Spa ecosystem in Alimosho. We provide a private, hygienic, and expertly managed heat therapy experience that respects your time and your health. Sauna sessions at Reflection are often paired with our Body Massages for the ultimate "Alimosho Escape" protocol.</p>
+          
+          <h3>Clinical Benefits of Heat Therapy</h3>
+          <ul>
+            <li><strong>Skin Detoxification:</strong> Sweating helps clear the pores of environmental pollutants.</li>
+            <li><strong>Muscular Recovery:</strong> Heat increases circulation, aiding in the repair of tight tissues.</li>
+            <li><strong>Respiratory Clarity:</strong> Excellent for clearing congestion in the humid Lagos environment.</li>
+            <li><strong>Mental Wellness:</strong> A forced disconnect that lowers heart rate and calms the mind.</li>
+          </ul>
+        `
       }
     ]
   },

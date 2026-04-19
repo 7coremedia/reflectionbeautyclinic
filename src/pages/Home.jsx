@@ -18,7 +18,7 @@ const heroImages = [
 const services = [
   { num: '01', name: 'Skin Care Clinic', desc: 'Clinical treatment for hyperpigmentation, acne, sunburn, and dermatological concerns. Combined with our proprietary SkincareByReflection™ product line for lasting results.', cta: 'Explore →', href: '/clinic' },
   { num: '02', name: 'Facials & Skin Treatments', desc: 'From brightening and anti-ageing to deep cleansing and acne facials — every treatment is personalised to your skin type and concern at the time of your visit.', cta: 'Explore →', href: '/clinic' },
-  { num: '03', name: 'Medical Spa', desc: 'Advanced procedures including electrocautery for skin tag, mole, and wart removal, alongside full-body massages and sauna. Clinical precision, spa atmosphere.', cta: 'Explore →', href: '/clinic' },
+  { num: '03', name: 'Spa & Wellness', desc: 'The premier spa destination in Alimosho. Full-body massages, deep-heat sauna therapy, and clinical procedures in a sanctuary of total calm.', cta: 'Explore Spa →', href: '/medical-spa' },
   { num: '04', name: 'Teeth Whitening', desc: 'Professional scaling, polishing, and teeth whitening by trained practitioners. Painless, immediate, and built around your overall facial confidence — not just your smile.', cta: 'Explore →', href: '/clinic' },
   { num: '05', name: 'SkincareByReflection™', desc: 'Our proprietary skincare line — formulated in partnership with our clinic team. Real actives, honest ingredients, developed and tested on real clients with real results.', cta: 'Shop →', href: '/shop' },
   { num: '06', name: 'Skin Consultation', desc: "Not sure where to start? Book a consultation with our therapists. We assess your skin, map your concerns, and build a treatment plan — clinical, clear, and honest.", cta: 'Book Now →', href: '/clinic#consult' },
@@ -30,7 +30,7 @@ const treatments = [
   { name: 'Brightening Facial', cat: 'Facials', duration: '60 min' },
   { name: 'Anti-Ageing Facial', cat: 'Facials', duration: '75 min' },
   { name: 'Skin Tag & Mole Removal (Electrocautery)', cat: 'Medical Spa', duration: '30 min' },
-  { name: 'Full Body Massage', cat: 'Medical Spa', duration: '60 min' },
+  { name: 'Full Body Spa Massage', cat: 'Wellness', duration: '60 min' },
   { name: 'Professional Teeth Whitening', cat: 'Dental Beauty', duration: '45 min' },
   { name: 'Scaling & Polishing', cat: 'Dental Beauty', duration: '45 min' },
   { name: 'Deep Cleansing Facial', cat: 'Facials', duration: '60 min' },
