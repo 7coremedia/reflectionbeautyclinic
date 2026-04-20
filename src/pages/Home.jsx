@@ -177,7 +177,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      
+
       <GetStartedModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
 
       {/* ── VALIDATION BAR (Immediately after Hero) ── */}

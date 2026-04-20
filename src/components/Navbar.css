@@ -11,52 +11,6 @@
               box-shadow var(--duration-base) var(--ease-smooth);
 }
 
-/* ── TICKER ── */
-.ticker {
-  background: var(--black-soft);
-  color: var(--base-bg);
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  transition: height 0.4s var(--ease-smooth), opacity 0.4s;
-}
-
-.navbar--scrolled .ticker {
-  height: 0;
-  opacity: 0;
-}
-
-.ticker-inner {
-  display: flex;
-  white-space: nowrap;
-  animation: tickerScroll 36s linear infinite;
-  will-change: transform;
-}
-
-.ticker-item {
-  opacity: 0.8;
-  padding: 0 1.5rem;
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  gap: 1.5rem;
-  font-weight: 500;
-}
-
-.ticker-dot {
-  opacity: 0.3;
-}
-
-@keyframes tickerScroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
 
 /* Scrolled state — stays cream, adds blur */
 .navbar--scrolled {

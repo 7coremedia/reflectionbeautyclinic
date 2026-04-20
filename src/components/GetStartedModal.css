@@ -26,7 +26,7 @@
   width: 100%;
   background: var(--base-bg);
   border-radius: 24px 24px 0 0;
-  padding: 2rem 1.5rem;
+  padding: 1.5rem 1.25rem;
   max-height: 90vh;
   overflow-y: auto;
   overflow-x: hidden;
@@ -48,7 +48,7 @@
     width: 1000px;
     max-width: 95vw;
     border-radius: 24px !important;
-    padding: 3.5rem;
+    padding: 2.5rem;
     box-shadow: 0 40px 100px rgba(0,0,0,0.15);
   }
 }
@@ -95,8 +95,8 @@
   .modal-body {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-top: 1rem;
+    gap: 1rem;
+    margin-top: 0.5rem;
   }
 }
 
@@ -105,7 +105,7 @@
   display: flex;
   align-items: center;
   background: var(--white);
-  padding: 1rem;
+  padding: 0.75rem;
   border-radius: 16px;
   text-decoration: none;
   border: 1px solid var(--gray-light);
@@ -121,8 +121,8 @@
 
 @media (min-width: 768px) {
   .action-card {
-    padding: 1.25rem;
-    gap: 1.5rem;
+    padding: 1rem;
+    gap: 1.25rem;
     border-radius: 20px;
   }
   
@@ -134,8 +134,8 @@
 }
 
 .action-image-wrapper {
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   border-radius: 12px;
   overflow: hidden;
   flex-shrink: 0;
@@ -157,8 +157,8 @@
 
 @media (min-width: 768px) {
   .action-image-wrapper {
-    width: 90px;
-    height: 90px;
+    width: 70px;
+    height: 70px;
     border-radius: 16px;
   }
 }
@@ -200,6 +200,6 @@
 
 .modal-footer {
   margin-top: 1rem;
-  padding-top: 1.5rem;
+  padding-top: 1rem;
   border-top: 1px solid rgba(12, 30, 22, 0.05);
 }

@@ -60,15 +60,6 @@ const megaMenuCategories = [
   }
 ];
 
-const tickerItems = [
-  'Skin Clinic · Alimosho, Lagos',
-  'Facials & Advanced Treatments',
-  'Medical Spa & Wellness',
-  'Professional Teeth Whitening',
-  'SkincareByReflection™ Products',
-];
-const tickerContent = [...tickerItems, ...tickerItems];
-
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -101,17 +92,6 @@ export default function Navbar() {
     <>
       <nav className={navClass} role="navigation" aria-label="Main navigation">
         
-        {/* ── TICKER GLOBALLY ATTACHED TO NAVBAR ── */}
-        <div className="ticker" aria-hidden="true">
-          <div className="ticker-inner">
-            {tickerContent.map((item, i) => (
-              <span key={i} className="ticker-item">
-                {item}
-                <span className="ticker-dot">·</span>
-              </span>
-            ))}
-          </div>
-        </div>
 
         <div className="navbar__inner container">
           {/* Logo Area */}
